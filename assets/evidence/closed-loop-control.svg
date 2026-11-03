@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1060" viewBox="0 0 1600 1060" role="img" aria-labelledby="title desc">
+  <title id="title">Closed-loop active vibration control: experimental facility and separate numerical research</title>
+  <desc id="desc">A functional reconstruction of Hiren Patel's active vibration control facility. A reference enters the feedback comparison; a dSPACE MicroLabBox executes the controller; a generic drive amplifier energizes a bonded piezoelectric or smart-material actuator on a flexible specimen. Motion sensing and signal acquisition return the measured response to the controller. An external disturbance acts on the specimen. The beam and hardware are illustrative apparatus schematics. The resumes document a dSPACE facility; MicroLabBox and MFC experience were supplied separately by Hiren. Sensor and driver models, experimental control law and measured performance are unspecified. The published numerical design path, coupled finite elements to SEREP to reduced LQR to full-model checking, is shown separately and is not asserted to be experimentally validated on this hardware. MFC material experience is also shown separately from the specimen.</desc>
+  <defs>
+    <marker id="drive-arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto"><path d="m2 2 8 4-8 4" fill="none" stroke="#dc5a32" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></marker>
+    <marker id="feedback-arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto"><path d="m2 2 8 4-8 4" fill="none" stroke="#6c855f" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></marker>
+    <marker id="disturbance-arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto"><path d="m2 2 8 4-8 4" fill="none" stroke="#69746b" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></marker>
+    <linearGradient id="beam-top" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#dae3d1"/><stop offset="1" stop-color="#b1c09f"/></linearGradient>
+    <linearGradient id="patch" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e5a987"/><stop offset="1" stop-color="#c75d35"/></linearGradient>
+    <linearGradient id="clamp-front" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#b4bcae"/><stop offset="1" stop-color="#8e9b84"/></linearGradient>
+    <pattern id="fine-grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="#202b27" stroke-opacity=".045"/></pattern>
+    <style>
+      text{font-family:Arial,Helvetica,sans-serif;fill:#202b27}
+      .mono{font-family:monospace;letter-spacing:.6px}.muted{fill:#586653}.orange{fill:#a6472c}
+      .drive{fill:none;stroke:#dc5a32;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#drive-arrow)}
+      .feedback{fill:none;stroke:#6c855f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#feedback-arrow)}
+      .disturbance{fill:none;stroke:#69746b;stroke-width:2.5;stroke-dasharray:7 6;marker-end:url(#disturbance-arrow)}
+      .leader{fill:none;stroke:#8d9b81;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+    </style>
+  </defs>
+  <rect width="1600" height="1060" fill="#f4f2eb"/>
+  <rect x="1270" width="330" height="175" fill="url(#fine-grid)"/>
+  <circle cx="62" cy="41" r="5" fill="#dc5a32"/>
+  <text x="80" y="49" font-size="22" class="mono orange">HIREN PATEL / ACTIVE VIBRATION CONTROL</text>
+  <text x="1540" y="49" text-anchor="end" font-size="22" class="mono muted">IIT MADRAS</text>
+  <text x="58" y="111" font-size="53" font-weight="600" letter-spacing="-1.6">Measure. Control. Actuate. Repeat.</text>
+  <text x="60" y="155" font-size="27" class="muted">A closed-loop view of the active-vibration-control facility.</text>
+  <path d="M60 183H1540" stroke="#cbd2c3"/>
+  <text x="60" y="218" font-size="22" class="mono muted">PHYSICAL FEEDBACK LOOP / FUNCTIONAL SCHEMATIC</text>
+
+  <!-- Reference and feedback comparison. This represents the loop function,
+       not a claim about a particular experimental controller implementation. -->
+  <rect x="60" y="287" width="175" height="102" rx="5" fill="#e7ecdf" stroke="#bbc7b1"/>
+  <text x="83" y="326" font-size="27" font-weight="600">Reference</text>
+  <text x="83" y="362" font-size="25" font-style="italic" class="muted">r(t)</text>
+  <path d="M235 340H251" class="drive"/>
+  <circle cx="280" cy="340" r="26" fill="#fcfbf7" stroke="#a3b296" stroke-width="2"/>
+  <text x="264" y="338" font-size="25">+</text>
+  <text x="275" y="360" font-size="24">−</text>
+  <path d="M307 340H350" class="drive"/>
+  <text x="315" y="318" font-size="23" font-style="italic" class="muted">e(t)</text>
+
+  <!-- Schematic controller enclosure; no exact product port layout is implied. -->
+  <path d="M355 270 385 245H715L685 270Z" fill="#536449" stroke="#536449"/>
+  <path d="M685 270 715 245V425L685 450Z" fill="#17201b"/>
+  <rect x="355" y="270" width="330" height="180" rx="3" fill="#202b27"/>
+  <text x="380" y="309" font-size="22" class="mono" style="fill:#bfcdad">dSPACE</text>
+  <text x="379" y="354" font-size="36" font-weight="600" style="fill:#f4f2eb">MicroLabBox</text>
+  <text x="380" y="389" font-size="24" style="fill:#e3ead9">Real-time controller</text>
+  <path d="M380 408H660" stroke="#a9b99a" stroke-opacity=".3"/>
+  <text x="380" y="437" font-size="21" style="fill:#bfcdad">Input → control → output</text>
+  <path d="M716 340H775" class="drive"/>
+  <text x="724" y="316" font-size="23" font-style="italic" class="muted">u<tspan baseline-shift="sub" font-size="20">c</tspan>(t)</text>
+
+  <!-- Drive electronics shown only by function, without a brand or voltage rating. -->
+  <path d="M780 290 799 274H1044L1025 290Z" fill="#d8decc" stroke="#b4c0a8"/>
+  <path d="M1025 290 1044 274V426L1025 442Z" fill="#acb99e"/>
+  <rect x="780" y="290" width="245" height="152" rx="3" fill="#e1e7d8" stroke="#b4c0a8"/>
+  <text x="803" y="324" font-size="20" class="mono muted">ACTUATOR DRIVER</text>
+  <text x="803" y="364" font-size="28" font-weight="600">Drive amplifier</text>
+  <text x="803" y="400" font-size="21" class="muted">Command →</text>
+  <text x="803" y="428" font-size="21" class="muted">actuator drive voltage</text>
+
+  <!-- Isometric apparatus illustration: a representative clamped specimen
+       and one generic bonded smart-material actuator. -->
+  <text x="1100" y="254" font-size="22" class="mono muted">FLEXIBLE SPECIMEN</text>
+  <path d="M1120 434 1432 482 1540 435 1225 390Z" fill="#202b27" opacity=".035"/>
+  <path d="M1175 370H1505L1537 348H1207Z" fill="url(#beam-top)" stroke="#718665" stroke-width="1.5"/>
+  <path d="M1175 370H1505V385H1175Z" fill="#8fa27f" stroke="#718665" stroke-width="1.5"/>
+  <path d="M1505 370 1537 348V363L1505 385Z" fill="#b9c7aa" stroke="#718665" stroke-width="1.5"/>
+  <path d="M1235 368H1335L1358 352H1258Z" fill="url(#patch)" stroke="#aa5839" stroke-width="1.5"/>
+  <path d="M1235 368H1335V371H1235Z" fill="#a64d2d"/>
+  <path d="M1120 308 1166 286 1210 308 1164 330Z" fill="#d4dbcd" stroke="#8b9a80" stroke-width="1.5"/>
+  <path d="M1120 308 1164 330V430L1120 405Z" fill="url(#clamp-front)" stroke="#8b9a80" stroke-width="1.5"/>
+  <path d="M1164 330 1210 308V409L1164 430Z" fill="#7e8d74" stroke="#6c7c62" stroke-width="1.5"/>
+  <ellipse cx="1145" cy="310" rx="7" ry="4" fill="#728568"/>
+  <ellipse cx="1182" cy="309" rx="7" ry="4" fill="#728568"/>
+  <path d="M1135 352 1151 361M1135 384 1151 393" stroke="#6b7c61" stroke-width="4" stroke-linecap="round"/>
+  <path d="M1045 340H1071V291H1290V350" class="drive"/>
+  <text x="1085" y="282" font-size="23" font-style="italic" class="orange">V<tspan baseline-shift="sub" font-size="20">a</tspan>(t)</text>
+  <path d="M1467 292V341" class="disturbance"/>
+  <text x="1450" y="278" font-size="24" font-style="italic" class="muted">d(t)</text>
+  <path d="M1294 374 1333 417H1434" class="leader"/>
+  <text x="1246" y="451" font-size="27" font-weight="600">Bonded actuator</text>
+  <text x="1175" y="488" font-size="24" class="muted">Piezo / smart-material actuation</text>
+  <text x="1175" y="523" font-size="23" class="muted">Voltage → strain → bending</text>
+
+  <!-- Measured motion closes the loop. Sensing and conditioning are generic. -->
+  <path d="M1538 370H1562V576H1300V614" class="feedback"/>
+  <text x="1378" y="559" font-size="23" font-style="italic" class="muted">motion y(t)</text>
+  <rect x="1130" y="620" width="340" height="130" rx="5" fill="#e8ecdf" stroke="#b8c6ac"/>
+  <text x="1156" y="662" font-size="31" font-weight="600">Motion sensing</text>
+  <text x="1156" y="699" font-size="23" class="muted">Structural response</text>
+  <text x="1156" y="731" font-size="21" class="muted">Sensor / signal pickup</text>
+  <path d="M1129 685H1046" class="feedback"/>
+  <rect x="690" y="620" width="350" height="130" rx="5" fill="#e8ecdf" stroke="#b8c6ac"/>
+  <text x="716" y="662" font-size="30" font-weight="600">Signal acquisition</text>
+  <text x="716" y="699" font-size="22" class="muted">Conditioning + input channel</text>
+  <text x="716" y="731" font-size="21" class="muted">Read by MicroLabBox</text>
+  <path d="M689 685H280V371" class="feedback"/>
+  <text x="356" y="653" font-size="26" font-weight="600" style="fill:#5d7751">Measured feedback</text>
+  <text x="356" y="718" font-size="23" class="muted">Back to the controller.</text>
+
+  <path d="M60 785H102" class="drive"/><text x="115" y="793" font-size="21" class="muted">Drive signal</text>
+  <path d="M325 785H367" class="feedback"/><text x="380" y="793" font-size="21" class="muted">Measured signal</text>
+  <path d="M639 785H681" class="disturbance"/><text x="694" y="793" font-size="21" class="muted">External disturbance</text>
+
+  <!-- Distinct evidence domains: no deployment arrow joins the numerical study
+       to the hardware and no MFC-specific specimen is asserted. -->
+  <rect x="60" y="828" width="905" height="144" rx="5" fill="#e2e8d8"/>
+  <text x="84" y="863" font-size="21" class="mono muted">SEPARATE PUBLISHED NUMERICAL STUDY</text>
+  <text x="84" y="908" font-size="28" font-weight="600">Coupled FE → SEREP → reduced LQR → full-model check</text>
+  <text x="84" y="945" font-size="22" class="muted">The paper’s control validation is numerical.</text>
+  <rect x="989" y="828" width="551" height="144" rx="5" fill="#ede9de"/>
+  <text x="1013" y="863" font-size="21" class="mono muted">SMART-MATERIAL EXPERIENCE</text>
+  <text x="1013" y="909" font-size="36" font-weight="600">MFC</text>
+  <text x="1106" y="908" font-size="26">Macro Fiber Composite</text>
+  <text x="1013" y="945" font-size="21" class="muted">Material experience stated separately by Hiren.</text>
+
+  <text x="60" y="1008" font-size="21" class="muted">Functional schematic based on the resumes and Hiren’s hardware details; apparatus geometry is illustrative.</text>
+  <text x="60" y="1038" font-size="21" class="muted">Sensor / driver types, the experimental control law and measured performance are not specified in these records.</text>
+</svg>

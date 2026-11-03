@@ -1,0 +1,99 @@
+{
+  "title": "STEP converter implementation and public image sources",
+  "reviewed_on": "2026-11-03",
+  "images": [
+    {
+      "file": "kicad-pcb-reference.png",
+      "description": "Official KiCad 8.0 release article, Figure 11: populated PCB assembly in the 3D Viewer.",
+      "origin": "KiCad project",
+      "source_page": "https://www.kicad.org/blog/2024/02/Version-8.0.0-Released/",
+      "download_url": "https://www.kicad.org/img/blog/2024/release-8.0.0/3d-viewer.png",
+      "licence": "CC BY 3.0 (chosen from the website’s GPL v3-or-later / CC BY 3.0-or-later dual licence)",
+      "licence_url": "https://creativecommons.org/licenses/by/3.0/",
+      "licence_statement": "https://www.kicad.org/about/licenses/",
+      "attribution": "KiCad project / CC BY 3.0",
+      "width": 1280,
+      "height": 845,
+      "sha256": "3004519da79a894a9640aec1db8e5ad775f28b1d2f8453310dc632907e9ae086",
+      "editing": "Original downloaded PNG bytes, scaled by CSS without cropping or other editing.",
+      "evidence_scope": "Public visual reference for PCB assembly detail. Not an output or validation result from Hiren Patel’s converter."
+    },
+    {
+      "file": "lqfp-leads-reference.jpg",
+      "description": "Real STMicroelectronics STM32F303 component, its package body and gull-wing leads.",
+      "origin": "Raimond Spekking, via Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File:STMicroelectronics_STM32F303-4570.jpg",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/d/d4/STMicroelectronics_STM32F303-4570.jpg",
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d4/STMicroelectronics_STM32F303-4570.jpg/1280px-STMicroelectronics_STM32F303-4570.jpg",
+      "licence": "CC BY-SA 4.0",
+      "licence_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "attribution": "© Raimond Spekking / CC BY-SA 4.0 (via Wikimedia Commons)",
+      "width": 1280,
+      "height": 1280,
+      "sha256": "e4ecb221d5cc1bf427d2366dda59fdf5660e7e1531ac011c3a765c41fd89537f",
+      "editing": "Official Wikimedia 1280-pixel rendition, copied unchanged and displayed without cropping. No other editing.",
+      "evidence_scope": "Public hardware reference illustrating body, leads and pads. Not Hiren Patel’s hardware or a converter output."
+    }
+  ],
+  "implementation": {
+    "archive": "Sherlock_STEP_Updater_v1.4.zip",
+    "input_formats": [
+      "STEP/STP assembly",
+      "Sherlock CSV/XLS/XLSX part list"
+    ],
+    "odb_relationship": "ODB++-derived placement and part identity enter through the Sherlock part list. The reviewed CLI does not accept a direct ODB++ file. Pad candidates in this build are identified from STEP solids.",
+    "source_functions": {
+      "sherlock_enricher/engine.py": [
+        "prepare",
+        "run",
+        "match_with_orientation"
+      ],
+      "sherlock_enricher/cad.py": [
+        "read_model",
+        "measure_component"
+      ],
+      "sherlock_enricher/matching.py": [
+        "match_rows"
+      ],
+      "sherlock_enricher/registration.py": [
+        "register_centres"
+      ],
+      "sherlock_enricher/body_shape.py": [
+        "classify_body_shape"
+      ],
+      "sherlock_enricher/terminal_recovery.py": [
+        "recover_fused_terminals"
+      ],
+      "sherlock_enricher/inference.py": [
+        "infer_leads"
+      ],
+      "sherlock_enricher/detailed_cad.py": [
+        "export_detailed"
+      ]
+    },
+    "outputs": [
+      "Parts_updated.csv",
+      "report.html",
+      "changes.csv",
+      "review_required.csv",
+      "audit.json",
+      "orientation_review.html",
+      "through_hole_diagnostics.csv",
+      "matching_config.json",
+      "updated_parts_config.json",
+      "detailed_cad/assembly.step",
+      "detailed_cad/viewer.html",
+      "detailed_cad/geometry_index.csv",
+      "detailed_cad/manifest.json"
+    ],
+    "scope": "Body/terminal measurement, explicitly labelled assumptions, audit and review outputs; separate source-preserving CAD companion. The updater itself does not assign materials, mesh, contacts or analysis loads.",
+    "validation": "The v1.4 archive contains synthetic STEP examples and recorded automated validation. Its source notes state that the referenced production STEP was unavailable and that native Windows GUI operation and Sherlock import were not executed for v1.4. This portfolio does not claim a new production validation.",
+    "production_history": "A retained retrospective diagnosis describes a partially matched earlier uploaded board run; it is not presented here as final production success."
+  },
+  "downstream_reference": {
+    "title": "Ansys Sherlock User Guide, 9.8: FEA—Ansys Workbench Integration",
+    "url": "https://ansyshelp.ansys.com/public/Views/Secured/corp/v261/en/sherlock_ug/sherlock_ug_ch_ansys_workb_integr01.html",
+    "section": "Notes on Exporting ECAD to Mechanical CAD Automation",
+    "verified": "Meshed geometry exports in blocked CDB format and imports through Workbench External Model. Structured regions are retained when present in the source mesh; no universal structured/hexahedral mesh is claimed."
+  }
+}

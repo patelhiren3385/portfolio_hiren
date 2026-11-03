@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900" role="img" aria-labelledby="title desc">
+  <title id="title">Caterpillar: engineering models and a condition-monitoring application delivered to production</title>
+  <desc id="desc">Hiren Patel, Senior Associate Engineer at Caterpillar R&amp;D, 2021 to 2024. The principal documented application used a convolutional neural network to grade journal-bearing wear on a one-to-ten output scale. Hiren owned it from ideation to production deployment and mentored one intern. Separate workstreams covered powertrain and driveline reduced-order models for bearing performance and durability, vibration and acoustic DNN gear-fault diagnostics, and machine-learning damper acceptability. Python GUIs and Django web tools are shown as a separate engineering-software capability. All diagrams are explanatory; no proprietary input, assessment grade, accuracy or production architecture is depicted.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M1 1L8 5L1 9" fill="none" stroke="#dc5a32" stroke-width="1.5"/></marker>
+    <style>
+      text{font-family:Arial,sans-serif;fill:#202b27}
+      .mono{font-family:monospace;letter-spacing:1px}
+      .muted{fill:#5d6a58}.orange{fill:#b84627}.light{fill:#f4f2eb}.sage{fill:#c9d2bd}
+      .outline{fill:none;stroke:#202b27;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+      .flow{fill:none;stroke:#dc5a32;stroke-width:2.5;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect width="1400" height="900" fill="#f4f2eb"/>
+  <circle cx="62" cy="39" r="5" fill="#dc5a32"/>
+  <text x="80" y="47" font-size="22" class="mono orange">CATERPILLAR R&amp;D / 2021–2024</text>
+  <text x="60" y="99" font-size="43" font-weight="700">A diagnostic model. A production application.</text>
+  <text x="60" y="135" font-size="23" class="muted">Senior Associate Engineer · Powertrain, machine learning and engineering software</text>
+
+  <!-- The principal application. The input is an abstract mechanical symbol, not a data sample. -->
+  <rect x="60" y="164" width="1280" height="326" rx="7" fill="#202b27"/>
+  <text x="84" y="201" font-size="22" class="mono sage">DELIVERED / CONDITION-MONITORING APPLICATION</text>
+
+  <!-- Journal bearing and shaft: deliberately schematic and without a wear score. -->
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M110 275H91V317H110M226 275H245V317H226" stroke="#aebda2" stroke-width="4"/>
+    <circle cx="168" cy="296" r="61" stroke="#dce3d3" stroke-width="4"/>
+    <circle cx="168" cy="296" r="45" stroke="#aebda2" stroke-width="9"/>
+    <path d="M168 270H278C286 270 292 282 292 296S286 322 278 322H168" fill="#829574" stroke="#dce3d3" stroke-width="3"/>
+    <ellipse cx="278" cy="296" rx="14" ry="26" fill="#aebda2" stroke="#dce3d3" stroke-width="2"/>
+    <circle cx="168" cy="296" r="26" fill="#202b27" stroke="#dce3d3" stroke-width="3"/>
+    <path d="M135 242A63 63 0 0 1 200 242M135 350A63 63 0 0 0 200 350" stroke="#dc5a32" stroke-width="4"/>
+    <path d="M112 296H137M198 296H263" stroke="#dce3d3" stroke-width="1.5" stroke-dasharray="5 6" opacity=".7"/>
+  </g>
+  <text x="84" y="387" font-size="27" font-weight="700" class="light">Journal bearing</text>
+  <text x="84" y="416" font-size="22" class="sage">Assessment input · schematic</text>
+
+  <path d="M410 296H470" class="flow"/>
+  <rect x="514" y="248" width="280" height="102" rx="11" fill="#344031" stroke="#c9d2bd" stroke-width="2"/>
+  <g fill="#aebda2">
+    <rect x="537" y="271" width="13" height="13" rx="2"/><rect x="555" y="271" width="13" height="13" rx="2"/><rect x="573" y="271" width="13" height="13" rx="2"/>
+    <rect x="537" y="289" width="13" height="13" rx="2"/><rect x="555" y="289" width="13" height="13" rx="2" fill="#dc5a32"/><rect x="573" y="289" width="13" height="13" rx="2"/>
+    <rect x="537" y="307" width="13" height="13" rx="2"/><rect x="555" y="307" width="13" height="13" rx="2"/><rect x="573" y="307" width="13" height="13" rx="2"/>
+  </g>
+  <text x="615" y="316" font-size="48" font-weight="700" class="light">CNN</text>
+  <text x="514" y="387" font-size="27" font-weight="700" class="light">Learned wear grading</text>
+  <text x="514" y="416" font-size="22" class="sage">Convolutional neural network</text>
+
+  <path d="M834 296H897" class="flow"/>
+  <text x="950" y="270" font-size="34" font-weight="700" class="light">1–10 wear scale</text>
+  <path d="M952 308H1258" stroke="#aebda2" stroke-width="8" stroke-linecap="round"/>
+  <path d="M952 293V323M1258 293V323" stroke="#dce3d3" stroke-width="3"/>
+  <text x="945" y="356" font-size="26" class="sage">1</text>
+  <text x="1241" y="356" font-size="26" class="sage">10</text>
+  <text x="950" y="387" font-size="27" font-weight="700" class="light">Output scale</text>
+  <text x="950" y="416" font-size="22" class="sage">Documented output range</text>
+
+  <line x1="84" y1="435" x2="1316" y2="435" stroke="#506047"/>
+  <circle cx="91" cy="463" r="5" fill="#dc5a32"/>
+  <text x="108" y="471" font-size="25" font-weight="700" class="light">Owned ideation → production deployment</text>
+  <text x="1025" y="471" font-size="24" class="sage">Mentored one intern</text>
+
+  <text x="60" y="531" font-size="22" class="mono">ADDITIONAL ENGINEERING WORKSTREAMS</text>
+
+  <!-- Three independent projects; no implied integrated production pipeline. -->
+  <rect x="60" y="549" width="402" height="212" rx="5" fill="#e5e8de"/>
+  <text x="82" y="582" font-size="22" class="mono">POWERTRAIN + DRIVELINE</text>
+  <g class="outline">
+    <path d="M84 632H165M94 617V647M149 617V647"/>
+    <circle cx="121" cy="632" r="21" fill="#f4f2eb"/><circle cx="121" cy="632" r="9"/>
+    <path d="M121 605V611M121 653V659M94 632H100M142 632H148M102 613L107 618M135 646L140 651M102 651L107 646M135 618L140 613"/>
+  </g>
+  <path d="M191 632H235" class="flow"/>
+  <rect x="265" y="608" width="117" height="48" rx="5" fill="#d1d9c5"/>
+  <text x="292" y="641" font-size="29" font-weight="700">ROM</text>
+  <text x="82" y="703" font-size="27" font-weight="700">Bearing performance</text>
+  <text x="82" y="734" font-size="23" class="muted">and durability analysis</text>
+
+  <rect x="499" y="549" width="402" height="212" rx="5" fill="#e5e8de"/>
+  <text x="521" y="582" font-size="22" class="mono">VIBRATION + ACOUSTICS</text>
+  <path d="M522 632H532L539 615L546 649L554 606L562 659L570 623L578 640L586 631H604" fill="none" stroke="#202b27" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M631 632H675" class="flow"/>
+  <rect x="704" y="608" width="117" height="48" rx="5" fill="#d1d9c5"/>
+  <text x="728" y="641" font-size="29" font-weight="700">DNN</text>
+  <text x="521" y="703" font-size="27" font-weight="700">Gear-fault detection</text>
+  <text x="521" y="734" font-size="23" class="muted">High-frequency vibration data</text>
+
+  <rect x="938" y="549" width="402" height="212" rx="5" fill="#e5e8de"/>
+  <text x="960" y="582" font-size="22" class="mono">DAMPER ASSESSMENT</text>
+  <g class="outline">
+    <path d="M987 604V614M975 604H999M974 614H1000V651H974Z"/>
+    <path d="M987 627V664M975 664H999M978 627H996"/>
+    <path d="M1008 614L1019 620L1008 626L1019 632L1008 638L1019 644L1008 651"/>
+  </g>
+  <path d="M1070 632H1114" class="flow"/>
+  <rect x="1143" y="608" width="117" height="48" rx="5" fill="#d1d9c5"/>
+  <text x="1180" y="641" font-size="29" font-weight="700">ML</text>
+  <text x="960" y="703" font-size="27" font-weight="700">Acceptability prediction</text>
+  <text x="960" y="734" font-size="23" class="muted">Data-driven assessment</text>
+
+  <!-- Tooling is a separate documented capability, not the claimed application stack. -->
+  <rect x="60" y="782" width="1280" height="67" rx="5" fill="#e9dfcc"/>
+  <g class="outline"><rect x="81" y="798" width="41" height="34" rx="3"/><path d="M81 809H122M89 804H91M96 804H98"/></g>
+  <text x="140" y="824" font-size="25" font-weight="700">Engineering interfaces</text>
+  <text x="494" y="810" font-size="25" font-weight="700">Python GUIs · Django web tools</text>
+  <text x="494" y="838" font-size="22" class="muted">Tools for engineering analysis and surrogate workflows</text>
+  <text x="60" y="880" font-size="22" class="muted">Résumé-based reconstruction · Illustrative schematics; no proprietary results or production screens.</text>
+</svg>

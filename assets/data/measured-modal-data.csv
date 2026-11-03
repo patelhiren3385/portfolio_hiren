@@ -1,0 +1,4 @@
+mode,frequency_hz,damping_ratio,damping_percent,response_axis,source
+VDR3 Mode 1,230.0,0.0389,3.89,Y,"Table 5.2 and Fig. 7, p. 7"
+C14 Mode 1,533.6,0.018,1.8,X,"Table 5.2 and Fig. 7, p. 7"
+PCB Mode 1,937.5,0.0101,1.01,Z,"Table 5.2 and Fig. 7, p. 7"

@@ -1,0 +1,18 @@
+[
+  {
+    "asset": "thermal-temperature.webp",
+    "original_png_sha256": "c85404b5cc342a3899dd86b63bdb5a46ff9a3533b8e55feb9a76b86d34fbdd27",
+    "lossless_webp_sha256": "4fe9532a9c17c8977afd81a4f8bbf0367a56cb2c72ed14ae7f6d4c3b0a1d593a",
+    "decoded_RGBA_pixels_equal": true,
+    "bytes_before": 1039963,
+    "bytes_after": 550838
+  },
+  {
+    "asset": "thermal-strain-cold.webp",
+    "original_png_sha256": "2d76bd7b9fd1f27a239d1daee0b4d4128d8e2092d030cdb38d8fdf1245a30116",
+    "lossless_webp_sha256": "95195d17f5efb45f7256780afd9046d0e4ce33256ee8b7ab4da7a47de8efcd11",
+    "decoded_RGBA_pixels_equal": true,
+    "bytes_before": 725481,
+    "bytes_after": 414718
+  }
+]

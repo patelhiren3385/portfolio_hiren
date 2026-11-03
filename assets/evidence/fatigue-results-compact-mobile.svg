@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="440" viewBox="0 0 400 440" role="img" aria-labelledby="chart-title chart-description">
+<title id="chart-title">Dirlik fatigue predictions compared with measured mean life</title>
+<desc id="chart-description">All six calibrated Dirlik comparisons from the published paper. Ratios are predicted life divided by measured mean life. M1_C uses a solid PCB representation and M3_C a shell PCB representation; both retain refined lead geometry. For X–0.20 VDR3, the measured mean was 9.0 minutes and M1_C and M3_C ratios are 1.34 and 1.50. For X–0.20 C14, the measured mean was 19.6 minutes and the ratios are 0.57 and 0.40. For Y–0.05 VDR3, the measured mean was 34.6 minutes and the ratios are 4.56 and 7.27. A vertical line at one marks exact agreement. The shaded 0.5 to 2 range is a visual reference only, not an acceptance criterion. Ratios are recomputed from the reported lifetimes in Tables 2.1 and 5.3.</desc>
+<rect width="400" height="440" fill="#f4f2eb"/>
+<g font-family="Arial, Helvetica, sans-serif" fill="#202b27">
+<text x="20" y="29" font-size="22" font-weight="600">How close is the</text>
+<text x="20" y="54" font-size="22" font-weight="600">life prediction?</text>
+<text x="20" y="78" font-size="14" fill="#616d60">Dirlik · measured damping · all six comparisons</text>
+<circle cx="27" cy="100" r="5.5" fill="#304c3c"/>
+<text x="40" y="105" font-size="14">M1_C · solid PCB</text>
+<path d="M211 93.5 217.5 100 211 106.5 204.5 100Z" fill="#dc5a32"/>
+<text x="224" y="105" font-size="14">M3_C · shell PCB</text>
+<text x="20" y="134" font-size="15" font-weight="600">X–0.20 / VDR3<tspan font-weight="400" fill="#616d60"> · test 9.0 min</tspan></text>
+<rect x="58.312" y="142" width="60.938" height="46" fill="#dfe6d6"/>
+<line x1="38.000" y1="142" x2="38.000" y2="188" stroke="#d9dcd1"/>
+<line x1="119.250" y1="142" x2="119.250" y2="188" stroke="#d9dcd1"/>
+<line x1="200.500" y1="142" x2="200.500" y2="188" stroke="#d9dcd1"/>
+<line x1="281.750" y1="142" x2="281.750" y2="188" stroke="#d9dcd1"/>
+<line x1="363.000" y1="142" x2="363.000" y2="188" stroke="#d9dcd1"/>
+<line x1="78.625" y1="142" x2="78.625" y2="188" stroke="#57634e" stroke-width="1.5" stroke-dasharray="4 4"/>
+<line x1="78.625" y1="153" x2="92.618" y2="153" stroke="#304c3c" stroke-width="2" opacity="0.35"/>
+<circle cx="92.618" cy="153" r="5.5" fill="#304c3c"/>
+<text x="102.618" y="158" font-size="15" font-weight="600" fill="#304c3c">1.34×</text>
+<line x1="78.625" y1="177" x2="98.938" y2="177" stroke="#dc5a32" stroke-width="2" opacity="0.35"/>
+<path d="M98.938 170.5 105.438 177 98.938 183.5 92.438 177Z" fill="#dc5a32"/>
+<text x="108.938" y="182" font-size="15" font-weight="600" fill="#dc5a32">1.50×</text>
+<text x="20" y="215" font-size="15" font-weight="600">X–0.20 / C14<tspan font-weight="400" fill="#616d60"> · test 19.6 min</tspan></text>
+<rect x="58.312" y="223" width="60.938" height="46" fill="#dfe6d6"/>
+<line x1="38.000" y1="223" x2="38.000" y2="269" stroke="#d9dcd1"/>
+<line x1="119.250" y1="223" x2="119.250" y2="269" stroke="#d9dcd1"/>
+<line x1="200.500" y1="223" x2="200.500" y2="269" stroke="#d9dcd1"/>
+<line x1="281.750" y1="223" x2="281.750" y2="269" stroke="#d9dcd1"/>
+<line x1="363.000" y1="223" x2="363.000" y2="269" stroke="#d9dcd1"/>
+<line x1="78.625" y1="223" x2="78.625" y2="269" stroke="#57634e" stroke-width="1.5" stroke-dasharray="4 4"/>
+<line x1="78.625" y1="234" x2="61.214" y2="234" stroke="#304c3c" stroke-width="2" opacity="0.35"/>
+<circle cx="61.214" cy="234" r="5.5" fill="#304c3c"/>
+<text x="71.214" y="239" font-size="15" font-weight="600" fill="#304c3c">0.57×</text>
+<line x1="78.625" y1="258" x2="54.374" y2="258" stroke="#dc5a32" stroke-width="2" opacity="0.35"/>
+<path d="M54.374 251.5 60.874 258 54.374 264.5 47.874 258Z" fill="#dc5a32"/>
+<text x="64.374" y="263" font-size="15" font-weight="600" fill="#dc5a32">0.40×</text>
+<text x="20" y="296" font-size="15" font-weight="600">Y–0.05 / VDR3<tspan font-weight="400" fill="#616d60"> · test 34.6 min</tspan></text>
+<rect x="58.312" y="304" width="60.938" height="46" fill="#dfe6d6"/>
+<line x1="38.000" y1="304" x2="38.000" y2="350" stroke="#d9dcd1"/>
+<line x1="119.250" y1="304" x2="119.250" y2="350" stroke="#d9dcd1"/>
+<line x1="200.500" y1="304" x2="200.500" y2="350" stroke="#d9dcd1"/>
+<line x1="281.750" y1="304" x2="281.750" y2="350" stroke="#d9dcd1"/>
+<line x1="363.000" y1="304" x2="363.000" y2="350" stroke="#d9dcd1"/>
+<line x1="78.625" y1="304" x2="78.625" y2="350" stroke="#57634e" stroke-width="1.5" stroke-dasharray="4 4"/>
+<line x1="78.625" y1="315" x2="223.278" y2="315" stroke="#304c3c" stroke-width="2" opacity="0.35"/>
+<circle cx="223.278" cy="315" r="5.5" fill="#304c3c"/>
+<text x="233.278" y="320" font-size="15" font-weight="600" fill="#304c3c">4.56×</text>
+<line x1="78.625" y1="339" x2="333.177" y2="339" stroke="#dc5a32" stroke-width="2" opacity="0.35"/>
+<path d="M333.177 332.5 339.677 339 333.177 345.5 326.677 339Z" fill="#dc5a32"/>
+<text x="343.177" y="344" font-size="15" font-weight="600" fill="#dc5a32">7.27×</text>
+<line x1="38" y1="360" x2="363" y2="360" stroke="#899580"/>
+<text x="38.000" y="381" font-size="14" text-anchor="middle" fill="#616d60">0</text>
+<text x="78.625" y="381" font-size="14" text-anchor="middle" fill="#616d60">1</text>
+<text x="119.250" y="381" font-size="14" text-anchor="middle" fill="#616d60">2</text>
+<text x="200.500" y="381" font-size="14" text-anchor="middle" fill="#616d60">4</text>
+<text x="281.750" y="381" font-size="14" text-anchor="middle" fill="#616d60">6</text>
+<text x="363.000" y="381" font-size="14" text-anchor="middle" fill="#616d60">8</text>
+<text x="200" y="407" font-size="16" text-anchor="middle">Predicted / measured life · 1 = agreement</text>
+<text x="200" y="431" font-size="14" text-anchor="middle" fill="#616d60">Shaded 0.5–2× range is a visual reference only</text>
+</g>
+</svg>

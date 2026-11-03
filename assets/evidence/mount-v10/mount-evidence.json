@@ -1,0 +1,87 @@
+{
+  "source": "DMC2026_digest.pdf",
+  "status": "Research digest; numerical study; submission previously reported, publication not independently established.",
+  "problem": "Where should a PCB be supported so assembly strain and component-lead dynamics both pass?",
+  "load_N": 70,
+  "load_area": "Microcontroller contact footprint",
+  "strain_limit_microstrain": 1600,
+  "first_PCB_mode_min_Hz": 800,
+  "PCB_to_component_peak_ratio_max_percent": 5,
+  "screen": {
+    "sampled": 400,
+    "static_pass": 15,
+    "full_pass": 5,
+    "static_retained_percent": 3.75
+  },
+  "strata": [
+    {
+      "mounts": 2,
+      "sampled": 140,
+      "static_pass": 2,
+      "full_pass": 0
+    },
+    {
+      "mounts": 3,
+      "sampled": 108,
+      "static_pass": 3,
+      "full_pass": 0
+    },
+    {
+      "mounts": 4,
+      "sampled": 88,
+      "static_pass": 4,
+      "full_pass": 2
+    },
+    {
+      "mounts": 5,
+      "sampled": 44,
+      "static_pass": 5,
+      "full_pass": 3
+    },
+    {
+      "mounts": 6,
+      "sampled": 20,
+      "static_pass": 1,
+      "full_pass": 0
+    }
+  ],
+  "selected": {
+    "layout": "LAY_4_0072",
+    "mounts": [
+      "G006",
+      "G037",
+      "G047",
+      "G052"
+    ],
+    "worst_zone_equivalent_elastic_strain_microstrain": 1499.2,
+    "first_PCB_mode_Hz": 823.6,
+    "strain_margin_microstrain": 100.8,
+    "strain_margin_percent": 6.3,
+    "frequency_margin_Hz": 23.6,
+    "frequency_margin_percent": 2.95,
+    "PCB_dominated_harmonic_peak_detected": false,
+    "nearest_sampled_frequency_Hz": 825.9,
+    "stress_at_nearest_sample_percent_of_component_peak": 0.1
+  },
+  "same_count_comparator": {
+    "layout": "LAY_4_0002",
+    "mount_count": 4,
+    "worst_zone_equivalent_elastic_strain_microstrain": 14387.5,
+    "ratio_vs_selected": 9.596784951974387
+  },
+  "alternative_four_mount": {
+    "layout": "LAY_4_0004",
+    "first_PCB_mode_Hz": 1084.4,
+    "strain_headroom_microstrain": 3.5
+  },
+  "limits": [
+    "Minimum sufficient count and best choice apply to sampled DOE, not the whole design space.",
+    "No detected PCB-dominated harmonic peak is not zero PCB stress.",
+    "70 N load is distinct from the later 400 N pressing case.",
+    "Manufacturing tolerance study remains future work.",
+    "The digest is a structural study; thermal HTML is a separate artifact."
+  ],
+  "caption_primary": "Original DMC digest, Fig. 1: two sampled four-mount layouts under the same 70 N load. Worst-zone equivalent strain is 1,499.2 versus 14,387.5 με, about 9.6× apart. Orange markers are active mounts; both maps use the same colour scale. Numerical study.",
+  "recommended_visual": "Make dmc-four-mount-strain-comparison.png the large primary visual (not the whole 4-panel composite). Place 1499.2 PASS and 14387.5 FAIL callouts in HTML outside it; use 400 → 15 → 5 as a short secondary strip. Expose dmc-dynamic-acceptance.png and dmc-selected-layout-response.png in a result tab or detail disclosure.",
+  "source_file": "../../papers/dmc-2026-digest.pdf"
+}

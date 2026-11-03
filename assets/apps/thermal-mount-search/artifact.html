@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Thermo-Mechanical Mount Search</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap">
+<style>
+/* One-screen layout on desktop: board | stages | readouts and charts. Each column scrolls on its own if the viewport is short. */
+:root{--bg:#F3F2EC;--panel:#FFFFFF;--ink:#1B1F1A;--muted:#5C6358;--line:#D6D8CC;--accent:#1F6B47;--hot:#B3301F;--warm:#C7781B;--temp:#7A3E9D;--ok:#24724A;--chip:#E6EDE3;
+--off:#B8700F;--offbg:#FBF0DC;--on:#1F6B47;--onbg:#E3EFE6;--lib:#6B3F9A;--libbg:#EFE6F6;--ld:#3C4A5C;--ldbg:#E7EBF0;
+--font-display:"Barlow Condensed","Arial Narrow",sans-serif;--font-body:"IBM Plex Sans","Segoe UI",system-ui,sans-serif;--font-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121512;--panel:#1A1E1A;--ink:#E6EAE2;--muted:#9CA596;--line:#2E342C;--accent:#63C08F;--hot:#F07A62;--warm:#E8A24A;--temp:#C48BE0;--ok:#6CCB97;--chip:#22301F;
+--off:#E8A84A;--offbg:#3A2C14;--on:#63C08F;--onbg:#1C3324;--lib:#C48BE0;--libbg:#2E2238;--ld:#AFC0D4;--ldbg:#232B33;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#121512;--panel:#1A1E1A;--ink:#E6EAE2;--muted:#9CA596;--line:#2E342C;--accent:#63C08F;--hot:#F07A62;--warm:#E8A24A;--temp:#C48BE0;--ok:#6CCB97;--chip:#22301F;
+--off:#E8A84A;--offbg:#3A2C14;--on:#63C08F;--onbg:#1C3324;--lib:#C48BE0;--libbg:#2E2238;--ld:#AFC0D4;--ldbg:#232B33;color-scheme:dark}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:13.5px;line-height:1.4;margin:0;padding:10px 14px;display:flex;flex-direction:column;gap:8px;height:100vh;overflow:hidden}
+header{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 16px}
+header h1{font-family:var(--font-display);font-weight:600;font-size:clamp(22px,2.4vw,30px);letter-spacing:.01em;margin:0;line-height:1.1}
+header .sub{color:var(--muted);font-size:12.5px}
+.case{display:flex;flex-wrap:wrap;gap:6px;margin-left:auto}
+.chip{font-family:var(--font-mono);font-size:11.5px;background:var(--chip);color:var(--ink);padding:2px 8px;border-radius:6px;white-space:nowrap}
+.main{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) minmax(0,1fr);gap:12px}
+.col{min-height:0;min-width:0;overflow:auto;display:grid;gap:9px;align-content:start;scrollbar-width:thin}
+.board{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px;display:grid;gap:8px;align-content:start}
+canvas{width:min(100%,calc(100vh - 330px));min-width:260px;aspect-ratio:1/1;display:block;margin:0 auto;max-width:100%}
+.fsel{display:flex;flex-wrap:wrap;gap:5px}
+.fsel button{font-size:12px;padding:3px 8px}
+.fsel button.on{background:var(--chip);border-color:var(--accent)}
+.cbar{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:8px;align-items:center;font-family:var(--font-mono);font-size:11.5px;color:var(--muted)}
+.cbar .ramp{height:9px;border-radius:3px;position:relative}
+.cbar .lim{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--ink)}
+.ctrl{display:flex;flex-wrap:wrap;gap:6px 8px;align-items:center}
+button,select{font:inherit;font-size:13px;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:5px 10px;cursor:pointer}
+button:hover,select:hover{border-color:var(--muted)}
+button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+button.primary{background:var(--accent);color:var(--panel);border-color:var(--accent)}
+.ctrl label{font-size:12px;color:var(--muted)}
+.ctrl input[type=range]{width:90px;accent-color:var(--accent)}
+.legend{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:11.5px;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:5px}
+.legend svg{background:#F6F3E8;border-radius:4px;padding:2px;box-sizing:content-box}
+/* stage strip */
+.pipe{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+.pcell{border:1.5px solid var(--line);border-radius:10px;padding:7px 9px;min-width:0;opacity:.55;transition:opacity .2s,border-color .2s,background .2s}
+.pcell .pk{font-family:var(--font-display);font-weight:600;font-size:16px;letter-spacing:.03em;line-height:1.1}
+.pcell .pw{font-size:11px;color:var(--muted)}
+.pcell .pv{font-family:var(--font-mono);font-size:11px;margin-top:3px;min-height:28px;line-height:1.3;overflow-wrap:anywhere}
+.pcell.act{opacity:1}
+.pcell[data-k=lib].act{border-color:var(--lib);background:var(--libbg)} .pcell[data-k=off].act{border-color:var(--off);background:var(--offbg)}
+.pcell[data-k=on].act{border-color:var(--on);background:var(--onbg)} .pcell[data-k=load].act{border-color:var(--ld);background:var(--ldbg)}
+.pcell[data-k=lib] .pk{color:var(--lib)} .pcell[data-k=off] .pk{color:var(--off)} .pcell[data-k=on] .pk{color:var(--on)} .pcell[data-k=load] .pk{color:var(--ld)}
+.status{background:var(--panel);border:1px solid var(--line);border-left:5px solid var(--line);border-radius:12px;padding:10px 13px;display:grid;gap:4px;min-width:0}
+.status.lib{border-left-color:var(--lib)} .status.off{border-left-color:var(--off)} .status.on{border-left-color:var(--on)} .status.load{border-left-color:var(--ld)}
+.eyebrow{font-family:var(--font-mono);font-size:11px;color:var(--muted);letter-spacing:.04em}
+.step{font-family:var(--font-display);font-weight:500;font-size:21px;line-height:1.12}
+.note{font-size:12.5px;color:var(--muted);min-height:34px}
+/* stage checklist */
+.stage{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:9px 11px;display:grid;gap:4px}
+.stage:empty{display:none}
+.srow{display:grid;grid-template-columns:16px minmax(0,1fr) 62px;gap:7px;align-items:start;font-size:12px;line-height:1.3}
+.srow .sm{font-family:var(--font-mono);font-size:11.5px;text-align:right;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.srow .sn{color:var(--muted)} .srow .sd{display:block;font-size:11px;color:var(--muted);opacity:.85}
+.srow.done .sn,.srow.done .sd{color:var(--ink)} .srow.done .sm{color:var(--ink)}
+.srow.act .sn{color:var(--ink);font-weight:500}
+.sn .ok{color:var(--ok);font-weight:500} .sn .bad{color:var(--hot);font-weight:500}
+.sdot{width:11px;height:11px;border-radius:50%;border:2px solid var(--line);margin-top:3px}
+.srow.done .sdot{background:var(--ok);border-color:var(--ok)} .srow.act .sdot{border-color:var(--c);animation:pulse 1s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 var(--c)}100%{box-shadow:0 0 0 6px transparent}}
+.stage .tot{display:flex;justify-content:space-between;gap:8px;font-family:var(--font-mono);font-size:11.5px;border-top:1px solid var(--line);padding-top:4px;margin-top:1px}
+.stage .hd{font-family:var(--font-mono);font-size:11px;color:var(--muted);letter-spacing:.04em}
+/* time budget */
+.budget{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:8px 11px;display:grid;gap:4px}
+.brow{display:grid;grid-template-columns:48px minmax(0,1fr) 62px;gap:7px;align-items:center;font-size:12px}
+.brow.w{grid-template-columns:56px minmax(0,1fr) 150px}
+.bbar{height:10px;background:var(--chip);border-radius:3px;position:relative;overflow:hidden}
+.bfill{position:absolute;left:0;top:0;bottom:0;width:0}
+.blim{position:absolute;top:0;bottom:0;width:2px;background:var(--ink)}
+.bval{font-family:var(--font-mono);text-align:right;font-variant-numeric:tabular-nums;font-size:11.5px}
+.tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+.tile{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:7px 10px;min-width:0}
+.tile .k{font-size:11px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tile .v{font-family:var(--font-mono);font-size:clamp(14px,1.1vw,18px);font-weight:500;font-variant-numeric:tabular-nums}
+.tile .v.bad{color:var(--hot)} .tile .v.good{color:var(--ok)}
+.bars{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:8px 11px;display:grid;gap:4px}
+.bars:empty{display:none}
+.bars.two{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:12px}
+.bars.two .eyebrow{grid-column:1/-1}
+.charts{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:8px 11px;display:grid;gap:3px}
+.charts svg{width:100%;height:auto;display:block}
+details.about{color:var(--muted);font-size:12px}
+details.about summary{cursor:pointer;font-family:var(--font-mono);font-size:11.5px;letter-spacing:.04em}
+details.about p{margin:4px 0;max-width:140ch}
+@media (max-width:1100px){body{height:auto;overflow:auto}.main{grid-template-columns:minmax(0,1fr)}.col{overflow:visible}canvas{width:100%}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+</head>
+<body>
+<header>
+<h1>Thermo-Mechanical Mount Search</h1><span class="sub">library once · offline per region sweep · online per candidate position · fields of the accepted layout for display</span>
+<div class="case" id="case"></div>
+</header>
+<div class="main">
+<section class="col">
+<div class="board">
+<canvas id="cv" width="800" height="800" aria-label="Board with the displayed field, mount regions, mounts, heat sources, candidate patches and tested positions"></canvas>
+<div class="fsel" id="fsel"></div>
+<div class="cbar"><span id="cb0">0</span><div class="ramp" id="ramp"><div class="lim" id="rlim"></div></div><span id="cb1"></span></div>
+<div class="ctrl">
+<button id="bp" class="primary">Pause</button><button id="bs">Next sweep</button><button id="br">Restart</button>
+<label for="sp">Speed</label><input type="range" id="sp" min="0.5" max="4" step="0.5" value="1.5"><span id="spv" class="eyebrow">1.5x</span>
+<label for="pace">Online</label><select id="pace"><option value="detail" selected>step by step</option><option value="fast">dots only</option></select>
+<label for="sel">Subset</label><select id="sel"></select>
+</div>
+<div class="legend" id="legend"></div>
+</div>
+</section>
+<section class="col">
+<div class="pipe" id="pipe" aria-label="Stage of the method that is running">
+<div class="pcell" data-k="lib"><div class="pk">LIBRARY</div><div class="pw">once per study</div><div class="pv" id="p_lib">free board: thermal and membrane blocks</div></div>
+<div class="pcell" data-k="off"><div class="pk">OFFLINE</div><div class="pw">once per region sweep</div><div class="pv" id="p_off">bending base with the held mounts</div></div>
+<div class="pcell" data-k="on"><div class="pk">ONLINE</div><div class="pw">once per candidate position</div><div class="pv" id="p_on">f1, strains, temperatures from small systems</div></div>
+<div class="pcell" data-k="load"><div class="pk">FIELDS</div><div class="pw">display only</div><div class="pv" id="p_load">the accepted layout, loaded step by step</div></div>
+</div>
+<div class="status" id="status"><div class="eyebrow" id="eb">READY</div><div class="step" id="t1">Board free, nothing applied</div><div class="note" id="t3">Press play to replay the search.</div></div>
+<div class="stage" id="stage"></div>
+<div class="budget" id="budget"></div>
+</section>
+<section class="col">
+<div class="tiles">
+<div class="tile"><div class="k">f1</div><div class="v" id="vf">-</div></div>
+<div class="tile"><div class="k">Strain, hot vertex</div><div class="v" id="veh">-</div></div>
+<div class="tile"><div class="k">Strain, cold vertex</div><div class="v" id="vec">-</div></div>
+<div class="tile"><div class="k">Hottest source</div><div class="v" id="vt">-</div></div>
+<div class="tile"><div class="k">Score s</div><div class="v" id="vs">-</div></div>
+<div class="tile"><div class="k" id="kl">Position</div><div class="v" id="vl">-</div></div>
+</div>
+<div class="charts"><div class="eyebrow">ACCEPTED LAYOUT AFTER EACH SWEEP</div><svg id="ch1" viewBox="0 0 420 150" role="img" aria-label="f1, strain and temperature per sweep"></svg>
+<div class="eyebrow">EVERY ONLINE EVALUATION</div><svg id="ch2" viewBox="0 0 420 200" role="img" aria-label="f1 against strain"></svg></div>
+<div class="bars" id="zones"></div>
+<div class="bars two" id="srcs"></div>
+</section>
+</div>
+<details class="about"><summary>ABOUT THIS REPLAY</summary><p id="about1">One mount per region. The thermal and membrane library of the free board is built once. Each region sweep is one bending <b>offline</b> stage (Algorithm 1, Steps 1 to 3 on the base of the mounts held during the sweep) followed by one <b>online</b> evaluation per candidate position: f1 from the zeros of the capacitance, the assembly zone strain from the capacitance at ω = 0, and the temperatures and thermal zone strains at the hot and the cold vertex from the library, all from small dense systems. The mount moves to the best position; the fields of that accepted layout are then shown for display only. The strip names the stage that is running and the time budget accumulates the measured seconds of each.</p><p id="foot"></p></details>
+
+<script src="artifact.js"></script>
+</body>
+</html>

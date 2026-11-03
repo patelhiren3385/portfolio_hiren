@@ -1,0 +1,42 @@
+/* Original hardware imagery. Natural colour, quiet captions, no decorative rendering. */
+.hero{grid-template-columns:.95fr 1.05fr;gap:48px;align-items:start;padding-top:54px}
+.hero .hero-copy{padding-top:24px}
+.engineering-photographs{display:grid;grid-template-columns:1fr 1fr;gap:16px 14px;margin:0;min-width:0}
+.hardware-photo{margin:0;min-width:0;background:#fff;border:1px solid #d7dbd4;overflow:hidden;border-radius:2px}
+.hardware-photo img{display:block;width:100%;height:auto;aspect-ratio:1.5;object-fit:contain;background:#fff}
+.hardware-photo-leading{grid-column:1/-1}
+.hardware-photo-leading img{aspect-ratio:2.5;object-fit:cover;object-position:center}
+.hardware-photo figcaption{padding:12px 14px 13px;border-top:1px solid #e2e4dc;line-height:1.5}
+.hardware-photo figcaption strong{display:block;font-size:12px;font-weight:600;letter-spacing:-.1px;color:#344037}
+.hardware-photo figcaption a{display:inline-block;font-size:10px;line-height:1.6;color:#727c6c;margin-top:3px;text-decoration:underline;text-decoration-color:#c0c8b7;text-underline-offset:3px}
+.hardware-photo figcaption a:hover{color:#9e4b2b;text-decoration-color:#9e4b2b}
+.hardware-photo-study img{object-fit:contain}
+.hero-bottom{padding-top:13px}
+.thermal-feature{background:#f8f8f4;border-color:#d8ddd2;padding:32px}
+.thermal-context{display:grid;grid-template-columns:1.1fr 1fr;gap:32px;align-items:center}
+.thermal-equipment{margin:0;background:#fff;border:1px solid #dce1d5;min-width:0}
+.thermal-equipment img{display:block;width:100%;height:auto;aspect-ratio:1.55;object-fit:cover;object-position:85% center}
+.thermal-equipment figcaption{font-size:10px;line-height:1.7;color:#717d67;padding:12px 15px;border-top:1px solid #e1e6d9}
+.thermal-equipment figcaption strong{font-weight:550;color:#4b5c40;display:block}
+.thermal-equipment a{text-decoration:underline;text-decoration-color:#b8c4ac;text-underline-offset:3px}
+.thermal-method>p{font:9px/1.8 var(--mono);letter-spacing:.7px;color:#9a573c;margin:0 0 16px}
+.thermal-method ol{list-style:none;counter-reset:method;margin:0;padding:0}
+.thermal-method li{counter-increment:method;display:grid;grid-template-columns:26px 1fr;gap:14px;padding:15px 0;border-top:1px solid #dce1d4}
+.thermal-method li:before{content:'0' counter(method);font:11px/1.7 var(--mono);color:#a6ad9a;margin-top:2px}
+.thermal-method h3{font:550 16px/1.5 var(--head);letter-spacing:-.2px;color:#3c4d32;margin:0 0 5px}
+.thermal-method li p{font-size:12px;line-height:1.85;color:#6a7a5d;margin:0}
+.thermal-method-figure{margin-top:23px;border-top:1px solid #d7decf;padding-top:13px}
+.thermal-method-figure>summary{font-size:11px;font-weight:500;color:#61734f;cursor:pointer;padding:5px 0}
+.thermal-method-figure[open]>summary{margin-bottom:17px}
+.thermal-bottom{margin-top:22px}
+.source-hardware{display:grid;grid-template-columns:1.1fr 1fr;gap:25px;align-items:center;margin:28px 0}
+.source-hardware figure{margin:0;background:#fff;border:1px solid #d7decf;border-radius:2px;overflow:hidden}
+.source-hardware img{display:block;width:100%;height:auto;aspect-ratio:2;object-fit:cover}
+.source-hardware figcaption{font-size:10px;line-height:1.7;color:#748066;padding:12px 16px}
+.source-hardware figcaption a{text-decoration:underline;text-underline-offset:3px}
+.source-hardware h3{font:550 22px/1.35 var(--head);letter-spacing:-.5px;margin:0 0 12px}
+.source-hardware p{font-size:13px;line-height:1.9;color:#69795b}
+@media(min-width:1500px){.hero{gap:64px}.hardware-photo figcaption{padding:14px 17px}.hardware-photo figcaption strong{font-size:13px}.hardware-photo figcaption a{font-size:11px}}
+@media(max-width:1100px){.hero{gap:30px;grid-template-columns:1fr 1fr}.hero h1{font-size:clamp(60px,7vw,89px);letter-spacing:-4px}.hero .hero-copy{padding-top:13px}.hero-intro{font-size:16px}.hero-actions{gap:18px;margin:27px 0 32px}.hero-actions .button{padding:14px 17px;gap:15px}.hero-actions .text-link{font-size:11px;gap:8px}.hardware-photo-leading img{aspect-ratio:2.15}.hardware-photo figcaption{padding:11px}.hardware-photo figcaption strong{font-size:11px}.hardware-photo figcaption a{font-size:9px}.thermal-context{gap:25px}.thermal-feature{padding:27px}}
+@media(max-width:800px){.hero{grid-template-columns:1fr;gap:36px}.hero .hero-copy{padding-top:0}.hero h1{font-size:clamp(60px,9.5vw,90px);letter-spacing:-4px}.hero-intro{max-width:530px;font-size:17px}.hero-actions{margin-bottom:29px}.engineering-photographs{max-width:650px;width:100%}.hardware-photo-leading img{aspect-ratio:2.5}.hardware-photo figcaption strong{font-size:13px}.hardware-photo figcaption a{font-size:10px}.thermal-context{grid-template-columns:1fr;gap:22px}.thermal-equipment img{aspect-ratio:2.15}.source-hardware{grid-template-columns:1fr}.source-hardware figure{max-width:600px}}
+@media(max-width:600px){.hero{padding-top:34px;gap:28px}.hero h1{font-size:65px;letter-spacing:-4px;margin-top:21px;margin-bottom:24px}.hero h1 em{letter-spacing:-4px}.hero .eyebrow{font-size:8px;letter-spacing:.9px}.hero-intro{font-size:16px}.hero-actions{gap:20px;flex-wrap:wrap;margin:27px 0}.hero-actions .button{font-size:11px}.hero-actions .text-link{font-size:11px}.hero-person{font-size:10px}.hero-person div>span{font-size:9px}.engineering-photographs{gap:11px 10px}.hardware-photo-leading img{aspect-ratio:2.2}.hardware-photo img{aspect-ratio:1.4}.hardware-photo-leading img{aspect-ratio:2.2}.hardware-photo figcaption{padding:10px 9px}.hardware-photo figcaption strong{font-size:11px;line-height:1.6}.hardware-photo figcaption a{font-size:9px;line-height:1.7}.hero-bottom{padding-top:8px}.thermal-feature{padding:22px 17px}.thermal-equipment img{aspect-ratio:1.6}.thermal-equipment figcaption{font-size:9px;padding:11px 13px}.thermal-method>p{font-size:8px}.thermal-method li{padding:13px 0;gap:10px}.thermal-method h3{font-size:15px}.thermal-method li p{font-size:11px}.source-hardware h3{font-size:21px}.source-hardware p{font-size:12px}}

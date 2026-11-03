@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f2eb">
+  <title>Thermo-Mechanical Mount Search · Hiren Patel</title>
+  <meta name="description" content="Hiren Patel’s recorded thermomechanical mount search: temperature fields, assembly strain, modal constraints and the original HTML research artifact.">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;650;700&family=Manrope:wght@400;500;600;650;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../thermal-showcase.css">
+</head>
+<body class="thermal-artifact-page">
+  <header class="tm-page-header"><a class="tm-page-brand" href="../../../index.html">Hiren Patel <span>MODELS INTO DESIGN DECISIONS</span></a><a class="tm-page-back" href="../../../index.html#space-mounts">← Back to the portfolio</a></header>
+  <main class="tm-page-main">
+    <div class="tm-page-intro">
+      <div><p class="tm-kicker">THE SUPPLIED RESEARCH ARTIFACT</p><h1>Where should a PCB be mounted when its supports also carry away heat?</h1><p>A recorded search across temperature, assembly strain and vibration constraints. The supplied search replay runs below.</p></div>
+      <div style="flex-shrink:0"><a class="tm-original-link" href="artifact.html" target="_blank" rel="noopener">Open artifact at full size ↗</a><a href="thermo_mechanical_mount_search.html" download="thermo_mechanical_mount_search.html" style="display:block;margin-top:10px;font-size:11px;text-align:center">Download original HTML ↓</a></div>
+    </div>
+    <div class="tm-page-results" aria-label="Final recorded results for subset 1+2+3+5"><span><strong>4 mounts</strong> · accepted subset 1+2+3+5</span><span><strong>1,597.9 Hz</strong> · first mode</span><span><strong>1,422.7 µε</strong> · worst hot/cold zone strain</span><span><strong>91.8 °C</strong> · hottest source</span></div>
+    <iframe class="tm-artifact-frame" src="artifact.html" title="Thermo-Mechanical Mount Search: recorded search replay and temperature and strain fields" loading="eager" allowfullscreen></iframe>
+    <div class="tm-page-caption"><p>A compatible web presentation of the supplied artifact. The original HTML is available unchanged above. Use the playback and field buttons to inspect recorded results; the browser does not run a new FE solve.</p><a href="../../evidence/thermal-v10/thermal-summary.json" target="_blank" rel="noopener">Recorded data &amp; source hash ↗</a></div>
+    <details class="tm-page-scope"><summary>Benchmark, method and transfer to industry</summary>
+      <p><strong>Recorded benchmark:</strong> 650 online evaluations across 20 region sweeps for subset 1+2+3+5. Mean online evaluation: 21.8 ms. Preparation: 259.09 s for the bending offline stages and 3.01 s for the thermal/membrane library. The source reports one-core timings; these are specific to this recorded run.</p>
+      <p><strong>How the method works:</strong> build thermal and membrane influence blocks once; build a bending base for each region sweep; reuse small systems at each candidate mount position. The accepted layout passes the stated 1,500 Hz frequency minimum, 1,500 µε monitored-zone strain maximum and 110 °C source-temperature maximum. It is the selected result among the recorded subsets, not a proof of the global optimum.</p>
+      <img class="tm-page-chart" src="../../evidence/thermal-v10/thermal-search-convergence.svg" width="900" height="460" alt="Constraint margins after each accepted region sweep. Frequency, strain and temperature all meet their thresholds from sweep 14 onward." loading="lazy">
+      <p><strong>Application:</strong> the same layout-search structure can support thermally conducting mounts in spacecraft electronics, industrial drives, power converters and avionics. The recorded example uses convection on both board faces, 60 °C air, a 70 °C housing and 2.66 W source power. Its final mounts remove 0.836 W. A spacecraft case dominated by screw-tower cooling requires its own contact, radiation and mission thermal boundary conditions.</p>
+      <p><strong>Web presentation:</strong> the supplied script is loaded as an external file so it renders reliably on this host. Its data, calculations, drawing code and playback controls are unchanged. <a href="compatibility-manifest.json" target="_blank" rel="noopener">Source and rendering checks ↗</a></p>
+      <p><strong>Evidence scope:</strong> the contours reproduce the supplied, quantized display fields. Strain acceptance concerns the three monitored zones. The file contains recorded results and algorithm stages; it does not include an independent full-FE error study or experimental validation. <a href="../../evidence/thermal-v10/README.md" target="_blank" rel="noopener">Figure provenance ↗</a></p>
+    </details>
+  </main>
+</body>
+</html>

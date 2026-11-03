@@ -1,0 +1,336 @@
+{
+  "source_file": "thermo_mechanical_mount_search.html",
+  "source_sha256": "4df1be5e28224858502ad07f40908f406bd1af43009fd05d1308c1b07fe0c215",
+  "evidence_type": "Embedded recorded search results and quantized display fields. The HTML replays stored results; it does not run an FE solver.",
+  "geometry": {
+    "nodes": 9944,
+    "elements": 17810,
+    "extents_mm": [
+      81.79459262201,
+      81.9742165247
+    ],
+    "candidate_patches": 143,
+    "regions": 5,
+    "heat_sources": 11,
+    "strain_interest_zones": 3
+  },
+  "constraints": {
+    "frequency_min_Hz": 1500.0,
+    "zone_mechanical_equivalent_strain_max_microstrain": 1500.0,
+    "source_temperature_max_C": 110.0,
+    "one_mount_per_region": true,
+    "min_mount_spacing_mm": 10
+  },
+  "operating_conditions": {
+    "hot": {
+      "T_air": 60.0,
+      "T_housing": 70.0,
+      "power_scale": 1.0
+    },
+    "cold": {
+      "T_air": -20.0,
+      "T_housing": -20.0,
+      "power_scale": 0.0
+    },
+    "total_source_power_W": 2.66,
+    "stress_free_reference_C": 25.0,
+    "assembly_patch_displacement_mm": 0.15,
+    "assembly_patch_centre_mm": [
+      17.2,
+      48.0
+    ],
+    "assembly_patch_radius_mm": 2.0
+  },
+  "best_subset": "1+2+3+5",
+  "accepted_mounts": {
+    "1": {
+      "x_mm": 23.24,
+      "y_mm": 76.06,
+      "id": "G077"
+    },
+    "2": {
+      "x_mm": 7.05,
+      "y_mm": 27.05,
+      "id": "G058"
+    },
+    "3": {
+      "x_mm": 71.91,
+      "y_mm": 49.29,
+      "id": "G036"
+    },
+    "5": {
+      "x_mm": 53.85,
+      "y_mm": 9.04,
+      "id": "G048"
+    }
+  },
+  "accepted_metrics": {
+    "F": 1597.9,
+    "Ea": 1277.5,
+    "Eth": 250.7,
+    "Etc": 325.3,
+    "Eh": 1388.7,
+    "Ec": 1422.7,
+    "Ts": 91.8,
+    "Q": -0.836,
+    "S": 1.0543,
+    "Zh": [
+      433.3,
+      1388.7,
+      450.7
+    ],
+    "Zc": [
+      488.3,
+      1422.7,
+      521.8
+    ],
+    "Tsrc": [
+      90.6,
+      86.4,
+      90.9,
+      91.8,
+      85.8,
+      87.5,
+      89.3,
+      88.0,
+      80.2,
+      81.3,
+      80.3
+    ]
+  },
+  "best_subset_search": {
+    "sweeps": 20,
+    "online_evaluations": 650,
+    "offline_seconds": 259.09,
+    "library_seconds": 3.0100000000000002,
+    "online_seconds": 14.14425,
+    "first_all_constraints_satisfied_sweep": 14,
+    "mean_online_milliseconds": 21.760384615384616
+  },
+  "accepted_progress": [
+    {
+      "sweep": 1,
+      "phase": "greedy",
+      "active_region": "1",
+      "frequency_Hz": 214.8,
+      "hot_strain_microstrain": 727.9,
+      "cold_strain_microstrain": 701.1,
+      "hottest_source_C": 95.3,
+      "score": 0.1432
+    },
+    {
+      "sweep": 2,
+      "phase": "greedy",
+      "active_region": "2",
+      "frequency_Hz": 372.6,
+      "hot_strain_microstrain": 1435.8,
+      "cold_strain_microstrain": 1489.1,
+      "hottest_source_C": 94.8,
+      "score": 0.2484
+    },
+    {
+      "sweep": 3,
+      "phase": "greedy",
+      "active_region": "3",
+      "frequency_Hz": 1048.3,
+      "hot_strain_microstrain": 1471.0,
+      "cold_strain_microstrain": 1502.1,
+      "hottest_source_C": 92.1,
+      "score": 0.6989
+    },
+    {
+      "sweep": 4,
+      "phase": "greedy",
+      "active_region": "5",
+      "frequency_Hz": 1072.9,
+      "hot_strain_microstrain": 1484.4,
+      "cold_strain_microstrain": 1515.7,
+      "hottest_source_C": 92.1,
+      "score": 0.7153
+    },
+    {
+      "sweep": 5,
+      "phase": "round 1",
+      "active_region": "1",
+      "frequency_Hz": 1162.6,
+      "hot_strain_microstrain": 1341.1,
+      "cold_strain_microstrain": 1364.8,
+      "hottest_source_C": 92.4,
+      "score": 0.7751
+    },
+    {
+      "sweep": 6,
+      "phase": "round 1",
+      "active_region": "2",
+      "frequency_Hz": 1183.2,
+      "hot_strain_microstrain": 1538.8,
+      "cold_strain_microstrain": 1563.9,
+      "hottest_source_C": 92.5,
+      "score": 0.7888
+    },
+    {
+      "sweep": 7,
+      "phase": "round 1",
+      "active_region": "3",
+      "frequency_Hz": 1192.3,
+      "hot_strain_microstrain": 1540.0,
+      "cold_strain_microstrain": 1569.2,
+      "hottest_source_C": 92.4,
+      "score": 0.7949
+    },
+    {
+      "sweep": 8,
+      "phase": "round 1",
+      "active_region": "5",
+      "frequency_Hz": 1285.5,
+      "hot_strain_microstrain": 1536.8,
+      "cold_strain_microstrain": 1554.4,
+      "hottest_source_C": 92.1,
+      "score": 0.857
+    },
+    {
+      "sweep": 9,
+      "phase": "round 2",
+      "active_region": "1",
+      "frequency_Hz": 1293.9,
+      "hot_strain_microstrain": 1466.9,
+      "cold_strain_microstrain": 1483.5,
+      "hottest_source_C": 92.2,
+      "score": 0.8626
+    },
+    {
+      "sweep": 10,
+      "phase": "round 2",
+      "active_region": "2",
+      "frequency_Hz": 1309.5,
+      "hot_strain_microstrain": 1632.5,
+      "cold_strain_microstrain": 1644.4,
+      "hottest_source_C": 92.3,
+      "score": 0.873
+    },
+    {
+      "sweep": 11,
+      "phase": "round 2",
+      "active_region": "3",
+      "frequency_Hz": 1371.6,
+      "hot_strain_microstrain": 1631.6,
+      "cold_strain_microstrain": 1646.8,
+      "hottest_source_C": 92.3,
+      "score": 0.9109
+    },
+    {
+      "sweep": 12,
+      "phase": "round 2",
+      "active_region": "5",
+      "frequency_Hz": 1371.4,
+      "hot_strain_microstrain": 1631.6,
+      "cold_strain_microstrain": 1646.8,
+      "hottest_source_C": 92.3,
+      "score": 0.9109
+    },
+    {
+      "sweep": 13,
+      "phase": "round 3",
+      "active_region": "1",
+      "frequency_Hz": 1498.8,
+      "hot_strain_microstrain": 1473.9,
+      "cold_strain_microstrain": 1512.3,
+      "hottest_source_C": 92.1,
+      "score": 0.9919
+    },
+    {
+      "sweep": 14,
+      "phase": "round 3",
+      "active_region": "2",
+      "frequency_Hz": 1528.1,
+      "hot_strain_microstrain": 1395.7,
+      "cold_strain_microstrain": 1427.0,
+      "hottest_source_C": 92.1,
+      "score": 1.0187
+    },
+    {
+      "sweep": 15,
+      "phase": "round 3",
+      "active_region": "3",
+      "frequency_Hz": 1602.9,
+      "hot_strain_microstrain": 1401.1,
+      "cold_strain_microstrain": 1444.7,
+      "hottest_source_C": 91.7,
+      "score": 1.0382
+    },
+    {
+      "sweep": 16,
+      "phase": "round 3",
+      "active_region": "5",
+      "frequency_Hz": 1602.9,
+      "hot_strain_microstrain": 1401.1,
+      "cold_strain_microstrain": 1444.7,
+      "hottest_source_C": 91.7,
+      "score": 1.0382
+    },
+    {
+      "sweep": 17,
+      "phase": "round 4",
+      "active_region": "1",
+      "frequency_Hz": 1578.7,
+      "hot_strain_microstrain": 1374.9,
+      "cold_strain_microstrain": 1412.9,
+      "hottest_source_C": 91.9,
+      "score": 1.0525
+    },
+    {
+      "sweep": 18,
+      "phase": "round 4",
+      "active_region": "2",
+      "frequency_Hz": 1578.6,
+      "hot_strain_microstrain": 1374.9,
+      "cold_strain_microstrain": 1412.9,
+      "hottest_source_C": 91.9,
+      "score": 1.0524
+    },
+    {
+      "sweep": 19,
+      "phase": "round 4",
+      "active_region": "3",
+      "frequency_Hz": 1598.2,
+      "hot_strain_microstrain": 1388.7,
+      "cold_strain_microstrain": 1422.7,
+      "hottest_source_C": 91.8,
+      "score": 1.0543
+    },
+    {
+      "sweep": 20,
+      "phase": "round 4",
+      "active_region": "5",
+      "frequency_Hz": 1597.9,
+      "hot_strain_microstrain": 1388.7,
+      "cold_strain_microstrain": 1422.7,
+      "hottest_source_C": 91.8,
+      "score": 1.0543
+    }
+  ],
+  "field_source_indices": {
+    "T": 95,
+    "eps_th_hot": 96,
+    "eps_asm": 97,
+    "eps_hot": 98,
+    "eps_cold": 99
+  },
+  "field_encoding": {
+    "type": "uint8 per element",
+    "temperature_range_C": [
+      60.0,
+      110.0
+    ],
+    "strain_range_microstrain": [
+      0.0,
+      3000.0
+    ],
+    "saturates": true,
+    "temperature_resolution_C": 0.19607843137254902,
+    "strain_resolution_microstrain": 11.764705882352942
+  },
+  "timing_scope": "Source UI labels stored timings as measured, one core. No processor/model/runtime version or independent repeat benchmark is included.",
+  "validation_scope": "No independent full-FE comparison values or errors are embedded. The source uses exact to describe residual-corrected static solves within its assumed FE formulation; not experimental accuracy or a universal exact dynamic model.",
+  "space_application_scope": "Method can inform thermally conducting support placement, but recorded case includes convection on both faces and is not a spacecraft vacuum case. Final heat through mounts is 0.836 W of 2.66 W (~31.4%). A spacecraft application needs revised thermal boundary conditions and mission validation."
+}

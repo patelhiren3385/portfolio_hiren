@@ -1,0 +1,180 @@
+{
+  "source": "Hiren Patel, IIT Madras thesis, 2021; user-supplied patel_thesis.pdf",
+  "source_pdf": "../../papers/patel-thesis.pdf",
+  "source_sha256": "abe49bbb3c704893d389805f1cc3639a15156a4303a1477cb269a52e4128956c",
+  "rights": "User-provided research thesis; thesis copyright notice: ©2021 Indian Institute of Technology Madras. No open licence asserted.",
+  "figures": [
+    {
+      "file": "beam-collocated-pairs.png",
+      "pdf_page": 72,
+      "printed_page": 50,
+      "figure": "4.1",
+      "width": 1000,
+      "height": 505,
+      "sha256": "fdb315fe2f2d47f9bcb460de4fa1dfcb719cb1f998ce9b27b7e31ae341d3c589",
+      "scope": "Original embedded image: three collocated piezoelectric sensor/actuator pairs on a cantilever beam."
+    },
+    {
+      "file": "nodes-uniform-96dof.png",
+      "pdf_page": 78,
+      "printed_page": 56,
+      "figure": "4.4",
+      "width": 1000,
+      "height": 97,
+      "sha256": "f04f52b858b59ac33e9926c01284182cc3b2ca133423ec484f42f9e001bda2c7",
+      "scope": "Original embedded image: equally spaced coordinate selection for Case 1. 96 DOFs reported in text."
+    },
+    {
+      "file": "nodes-critical-38dof.png",
+      "pdf_page": 78,
+      "printed_page": 56,
+      "figure": "4.5",
+      "width": 1000,
+      "height": 97,
+      "sha256": "803bf4e920661d953dfab34d6857e00d241122a20640a5fcb467e9dca76b39cb",
+      "scope": "Original embedded image: selected coordinates for Case 2. 38 DOFs reported in text; the image is not used to reconstruct an exact coordinate list."
+    },
+    {
+      "file": "control-loop-source.png",
+      "pdf_page": 76,
+      "printed_page": 54,
+      "figure": "4.2",
+      "width": 992,
+      "height": 388,
+      "sha256": "49f9289d44d8fe2944b2a2b94e3437f72754b351a4533fc919ab2524d0c7eb8b",
+      "scope": "Original vector figure rendered with a tight crop; no plot or label alteration."
+    },
+    {
+      "file": "deterministic-control-comparison.png",
+      "pdf_page": 81,
+      "printed_page": 59,
+      "figure": "4.11",
+      "width": 756,
+      "height": 616,
+      "sha256": "219da3d05e811969098c6fd2c69b34cbc0e8f1f9ca28114c07a9a83d535056a6",
+      "scope": "Full FE versus 96-DOF and 38-DOF closed-loop displacement. Original vector figure rendered; full axes and legend retained."
+    },
+    {
+      "file": "stochastic-impulse-uncontrolled-response.png",
+      "pdf_page": 91,
+      "printed_page": 69,
+      "figure": "5.3a",
+      "width": 568,
+      "height": 460,
+      "sha256": "82ca168a0be097ebf97ca3300d85e34ae539beb56477690fbdd08947e0609b7b",
+      "scope": "Original uncontrolled impulse displacement response; axes and legend retained."
+    },
+    {
+      "file": "stochastic-impulse-uncontrolled-pdf.png",
+      "pdf_page": 91,
+      "printed_page": 69,
+      "figure": "5.3b",
+      "width": 564,
+      "height": 468,
+      "sha256": "3a828e2a33ba5d3ec9e0805ea14038e4274ba501714971e76ea1328bcf55b2f0",
+      "scope": "Original PDF of uncontrolled peak tip displacement; axes and legend retained."
+    },
+    {
+      "file": "stochastic-impulse-controlled-response.png",
+      "pdf_page": 92,
+      "printed_page": 70,
+      "figure": "5.5a",
+      "width": 568,
+      "height": 452,
+      "sha256": "2bfb5c97cbad0a658254efa67fcafee6adf74565c333f4ff8987a4338928b2fe",
+      "scope": "Original controlled impulse displacement response; axes and legend retained."
+    },
+    {
+      "file": "stochastic-impulse-controlled-pdf.png",
+      "pdf_page": 92,
+      "printed_page": 70,
+      "figure": "5.5b",
+      "width": 564,
+      "height": 452,
+      "sha256": "1bb69d540ab7b52f0739a6fdce762d5987b0d78534d282d9aa48791ad3f2d059",
+      "scope": "Original PDF of controlled peak tip displacement; axes and legend retained."
+    },
+    {
+      "file": "stochastic-compute-table.png",
+      "pdf_page": 94,
+      "printed_page": 72,
+      "figure": "Table 5.1",
+      "width": 1072,
+      "height": 224,
+      "sha256": "988a4040cdc0504e7857bdefefad42f24804909152f93ff8cedf1838905d74bc",
+      "scope": "Original numerical table; exact values retained. Do not relabel L² norm as prediction error."
+    },
+    {
+      "file": "stochastic-actuation-sensing-pdfs.png",
+      "pdf_page": 94,
+      "printed_page": 72,
+      "figure": "5.7",
+      "width": 1148,
+      "height": 480,
+      "sha256": "d1d8aff2b2bd0e898809f996a7d049ae6c4b0752cd6bfdf60478db2bb3679052",
+      "scope": "Original actuator-input and sensor-output PDFs under impulse loading."
+    }
+  ],
+  "numerical_claims": {
+    "nominal": {
+      "full_mechanical_dofs": 402,
+      "full_first_order_states": 804,
+      "uniform_dofs": 96,
+      "critical_dofs": 38,
+      "selected_nodes_reported": 19,
+      "critical_dofs_reported": 16,
+      "computational_cost_reduction_percent": 97.5,
+      "references": [
+        "PDF77 / printed55 (selection cases)",
+        "PDF81 / printed59, Figure4.11",
+        "PDF82 / printed60 (DOF counts and computational-cost reduction)"
+      ]
+    },
+    "stochastic": {
+      "random_parameter": "Young’s modulus, lognormal",
+      "mean_E_GPa": 210,
+      "monte_carlo_realizations": 1000,
+      "active_dofs_for_plots": 320,
+      "time_saved_percent": 45.6,
+      "reported_mean_peak_displacement_reduction_percent_approx": 35,
+      "references": [
+        "PDF88–89 / printed66–67 (gain per realization, material model)",
+        "PDF91 / printed69 (320 active DOFs, 1000 realizations)",
+        "PDF93 / printed71 (approximately35% mean-peak reduction)",
+        "PDF94 / printed72, Table5.1 (time saved)"
+      ]
+    },
+    "time_table": [
+      {
+        "active_dofs": 50,
+        "L2_norm": 0.9765,
+        "time_saved_percent": 97.54
+      },
+      {
+        "active_dofs": 100,
+        "L2_norm": 0.8965,
+        "time_saved_percent": 94.36
+      },
+      {
+        "active_dofs": 200,
+        "L2_norm": 0.8263,
+        "time_saved_percent": 78.56
+      },
+      {
+        "active_dofs": 320,
+        "L2_norm": 0.5632,
+        "time_saved_percent": 45.6
+      }
+    ]
+  },
+  "animation_scope": "An explanatory coordinate-selection and feedback schematic. It illustrates the three-pair thesis benchmark; schematic positions are indicative. No moving beam, response history, controller output, material realization, uncertainty band or experimental result is synthesized. Original thesis plots remain static and unaltered.",
+  "publication_relationship": "The associated IFAC2020 paper uses two actuators (its Fig1). Thesis Chapter4 uses three collocated sensor/actuator pairs. This exhibit is explicitly labelled as thesis evidence, with links to associated IFAC and SICE publications.",
+  "validation_boundaries": [
+    "Numerical beam studies, not hardware-validation results.",
+    "Stochastic analysis calculates a deterministic LQR gain separately for each realization; no single fixed robust-controller guarantee.",
+    "Thesis Table5.1 L² norm is not relabelled as prediction error.",
+    "The distributions’ coefficient of variation is not specified here; no new samples are generated.",
+    "Performance and timing numbers belong to these benchmark configurations.",
+    "The table of contents uses different page numbers; all source links use physical PDF page numbers verified directly."
+  ]
+}

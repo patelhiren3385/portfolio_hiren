@@ -22,31 +22,39 @@ No real photographs were used for training or testing. Same-generator synthetic 
 
 The model weights, inference implementation and research package come from the [Bearing Insight source app](https://bearing-insight-hiren.patelhiren3385.chatgpt.site), source commit `e9cf0661c1b1868764d1c4ca90ecae5a5f86c8c1`. Hosting the portfolio and running browser inference require no Python or machine-learning dependencies. Those dependencies are needed only to reproduce the training process described in the research package.
 
-## Repository and address
+## Repository and website address
 
-| Option | Repository under `patelhiren3385` | Published address |
+This package is configured for the existing project repository **[patelhiren3385/portfolio_hiren](https://github.com/patelhiren3385/portfolio_hiren)**.
+
+**Expected website address after a successful deployment: [https://patelhiren3385.github.io/portfolio_hiren/](https://patelhiren3385.github.io/portfolio_hiren/)**
+
+The website and GitHub profile are separate pages:
+
+| Page | Address | Purpose |
 |---|---|---|
-| Personal homepage | `patelhiren3385.github.io` | `https://patelhiren3385.github.io/` |
-| Project site | For example, `portfolio` | `https://patelhiren3385.github.io/portfolio/` |
+| Portfolio website | `https://patelhiren3385.github.io/portfolio_hiren/` | The complete HTML/CSS/JavaScript portfolio and research artifacts |
+| GitHub profile | `https://github.com/patelhiren3385` | GitHub's profile, repositories and contribution history |
+| Source repository | `https://github.com/patelhiren3385/portfolio_hiren` | Website files and deployment workflow |
 
-This export is prepared for **patelhiren3385.github.io** at **https://patelhiren3385.github.io/**. The address becomes live only after deployment succeeds.
+Publishing this project does not replace the GitHub profile layout. Add the portfolio URL to the profile's website field and to a profile README to help visitors find it. A profile README belongs in a separate public repository named `patelhiren3385`, with a nonempty `README.md` at its root. See [GitHub's profile README instructions](https://docs.github.com/en/account-and-profile/how-tos/profile-customization/managing-your-profile-readme).
 
-## Publish
+## Publish or update this project
 
-1. Create the chosen repository on GitHub. A public repository supports GitHub Pages on GitHub Free.
-2. Put **the contents of this export** at the repository root: `index.html`, `assets/`, `.nojekyll`, `README.md` and `.github/workflows/pages.yml`. Include the hidden `.github` directory; do not upload the enclosing folder or just the ZIP.
-3. Commit the files to `main`.
-4. Open **Settings → Pages → Build and deployment → Source**, and choose **GitHub Actions**. The included workflow is ready to use.
-5. Open **Actions → Publish portfolio to GitHub Pages → Run workflow** on `main` for the first deployment. Later pushes to `main` deploy automatically.
-6. Use the URL shown by the successful deployment or **Settings → Pages**.
+The existing deployment workflow is **`.github/workflows/static.yml`**, named **Deploy static content to Pages**. Preserve this workflow; the export's separate `pages.yml` workflow is not needed in this repository.
 
-The workflow uploads the repository root directly. `.git` and `.github` are excluded from the published artifact by the upload action. The README is public content. The empty `.nojekyll` is included for static-site compatibility.
+1. Put the website files at the repository root: `index.html`, `assets/`, `.nojekyll` and `README.md`. Keep the existing `.github/workflows/static.yml` in place. Upload the extracted files and folders, not only the ZIP or its enclosing folder.
+2. Commit the website changes to `main`. The complete `assets/` directory is required for styling, scripts, images, papers and applications.
+3. In **Settings → Pages → Build and deployment → Source**, use **GitHub Actions**.
+4. Check **Actions → Deploy static content to Pages** for the deployment triggered by the commit. If a manual run is needed, choose **Run workflow** on `main`.
+5. Wait for the deployment to succeed, then open **Settings → Pages → Visit site**. The website should use the project URL above, including `/portfolio_hiren/`.
+
+The workflow publishes static files from the repository. The README is public content. The empty `.nojekyll` is included for static-site compatibility. Keep the runtime asset links relative so the site works under this project path.
 
 ## Preview and edit
 
 From this folder, run `python3 -m http.server 8000` and visit `http://localhost:8000/`. Edit `index.html` and the files in `assets/`; commit and push the changes. Keep asset references relative (`assets/...`) so they also work under a project URL. If you change the repository name, update the `og:url` and `og:image` URLs in `index.html` to the new Pages address.
 
-Use `main` for this workflow, or update both branch references in `.github/workflows/pages.yml` if you choose another branch.
+Use `main` with the existing `.github/workflows/static.yml` workflow. If you change branches, update the existing workflow and Pages configuration consistently.
 
 ## Evidence and attribution
 
@@ -67,6 +75,4 @@ Use Bearing Insight’s bundled `metrics.json` for that app’s numerical output
 - [GitHub Pages site types and URL rules](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages)
 - [Choose GitHub Actions as the publishing source](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
 - [Custom Pages workflows](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)
-- [Checkout v7 release](https://github.com/actions/checkout/releases/tag/v7.0.1) · [Pages artifact v5 release](https://github.com/actions/upload-pages-artifact/releases)
-
-Action versions checked against official GitHub sources on 2 November 2026: `checkout@v7`, `configure-pages@v5`, `upload-pages-artifact@v5`, `deploy-pages@v4`.
+- [Manage a GitHub profile README](https://docs.github.com/en/account-and-profile/how-tos/profile-customization/managing-your-profile-readme)

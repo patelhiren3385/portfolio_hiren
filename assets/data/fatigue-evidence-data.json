@@ -1,0 +1,385 @@
+{
+  "doi": "10.1016/j.microrel.2026.116158",
+  "paper_pages": 9,
+  "tests": [
+    {
+      "pcb_id": "A1",
+      "case": "X\u20130.20",
+      "axis": "X",
+      "input_psd_g2_hz": 0.2,
+      "input_grms": 17.9,
+      "vdr3_failure_min": 8,
+      "c14_failure_min": 20,
+      "c14_status": "failed",
+      "source": "Table 2.1, p. 4"
+    },
+    {
+      "pcb_id": "A2",
+      "case": "X\u20130.20",
+      "axis": "X",
+      "input_psd_g2_hz": 0.2,
+      "input_grms": 17.9,
+      "vdr3_failure_min": 10,
+      "c14_failure_min": 18,
+      "c14_status": "failed",
+      "source": "Table 2.1, p. 4"
+    },
+    {
+      "pcb_id": "A3",
+      "case": "X\u20130.20",
+      "axis": "X",
+      "input_psd_g2_hz": 0.2,
+      "input_grms": 17.9,
+      "vdr3_failure_min": 9,
+      "c14_failure_min": 23,
+      "c14_status": "failed",
+      "source": "Table 2.1, p. 4"
+    },
+    {
+      "pcb_id": "A4",
+      "case": "X\u20130.20",
+      "axis": "X",
+      "input_psd_g2_hz": 0.2,
+      "input_grms": 17.9,
+      "vdr3_failure_min": 6,
+      "c14_failure_min": 16,
+      "c14_status": "failed",
+      "source": "Table 2.1, p. 4"
+    },
+    {
+      "pcb_id": "A5",
+      "case": "X\u20130.20",
+      "axis": "X",
+      "input_psd_g2_hz": 0.2,
+      "input_grms": 17.9,
+      "vdr3_failure_min": 12,
+      "c14_failure_min": 21,
+      "c14_status": "failed",
+      "source": "Table 2.1, p. 4"
+    },
+    {
+      "pcb_id": "A6",
+      "case": "Y\u20130.05",
+      "axis": "Y",
+      "input_psd_g2_hz": 0.05,
+      "input_grms": 8.95,
+      "vdr3_failure_min": 40,
+      "c14_failure_min": null,
+      "c14_status": "run-out; no failure by 90 min",
+      "source": "Table 2.1, p. 4; test limit in \u00a72.3, p. 3"
+    },
+    {
+      "pcb_id": "A7",
+      "case": "Y\u20130.05",
+      "axis": "Y",
+      "input_psd_g2_hz": 0.05,
+      "input_grms": 8.95,
+      "vdr3_failure_min": 35,
+      "c14_failure_min": null,
+      "c14_status": "run-out; no failure by 90 min",
+      "source": "Table 2.1, p. 4; test limit in \u00a72.3, p. 3"
+    },
+    {
+      "pcb_id": "A8",
+      "case": "Y\u20130.05",
+      "axis": "Y",
+      "input_psd_g2_hz": 0.05,
+      "input_grms": 8.95,
+      "vdr3_failure_min": 29,
+      "c14_failure_min": null,
+      "c14_status": "run-out; no failure by 90 min",
+      "source": "Table 2.1, p. 4; test limit in \u00a72.3, p. 3"
+    },
+    {
+      "pcb_id": "A9",
+      "case": "Y\u20130.05",
+      "axis": "Y",
+      "input_psd_g2_hz": 0.05,
+      "input_grms": 8.95,
+      "vdr3_failure_min": 32,
+      "c14_failure_min": null,
+      "c14_status": "run-out; no failure by 90 min",
+      "source": "Table 2.1, p. 4; test limit in \u00a72.3, p. 3"
+    },
+    {
+      "pcb_id": "A10",
+      "case": "Y\u20130.05",
+      "axis": "Y",
+      "input_psd_g2_hz": 0.05,
+      "input_grms": 8.95,
+      "vdr3_failure_min": 37,
+      "c14_failure_min": null,
+      "c14_status": "run-out; no failure by 90 min",
+      "source": "Table 2.1, p. 4; test limit in \u00a72.3, p. 3"
+    }
+  ],
+  "calibrated_predictions": [
+    {
+      "component": "VDR3",
+      "case": "X\u20130.20",
+      "model": "M1_C",
+      "observed_mean_min": 9.0,
+      "observed_sample_sd_min": 2.2,
+      "n": 5,
+      "dirlik_min": 12.1,
+      "steinberg_min": 223.1,
+      "dirlik_ratio_recomputed": 1.3444444444444443,
+      "steinberg_ratio_recomputed": 24.788888888888888,
+      "dirlik_ratio_printed": 1.3,
+      "steinberg_ratio_printed": 24.8,
+      "source": "Tables 2.1 (p. 4) and 5.3 (p. 7)",
+      "note": ""
+    },
+    {
+      "component": "VDR3",
+      "case": "X\u20130.20",
+      "model": "M3_C",
+      "observed_mean_min": 9.0,
+      "observed_sample_sd_min": 2.2,
+      "n": 5,
+      "dirlik_min": 13.5,
+      "steinberg_min": 107.1,
+      "dirlik_ratio_recomputed": 1.5,
+      "steinberg_ratio_recomputed": 11.899999999999999,
+      "dirlik_ratio_printed": 1.5,
+      "steinberg_ratio_printed": 11.9,
+      "source": "Tables 2.1 (p. 4) and 5.3 (p. 7)",
+      "note": ""
+    },
+    {
+      "component": "C14",
+      "case": "X\u20130.20",
+      "model": "M1_C",
+      "observed_mean_min": 19.6,
+      "observed_sample_sd_min": 2.7,
+      "n": 5,
+      "dirlik_min": 11.2,
+      "steinberg_min": 132.9,
+      "dirlik_ratio_recomputed": 0.5714285714285714,
+      "steinberg_ratio_recomputed": 6.780612244897959,
+      "dirlik_ratio_printed": 0.7,
+      "steinberg_ratio_printed": 6.8,
+      "source": "Tables 2.1 (p. 4) and 5.3 (p. 7)",
+      "note": "Printed Dirlik error factor 0.7 is inconsistent with 11.2/19.6=0.5714."
+    },
+    {
+      "component": "C14",
+      "case": "X\u20130.20",
+      "model": "M3_C",
+      "observed_mean_min": 19.6,
+      "observed_sample_sd_min": 2.7,
+      "n": 5,
+      "dirlik_min": 7.9,
+      "steinberg_min": 44.2,
+      "dirlik_ratio_recomputed": 0.4030612244897959,
+      "steinberg_ratio_recomputed": 2.2551020408163267,
+      "dirlik_ratio_printed": 0.4,
+      "steinberg_ratio_printed": 2.3,
+      "source": "Tables 2.1 (p. 4) and 5.3 (p. 7)",
+      "note": ""
+    },
+    {
+      "component": "VDR3",
+      "case": "Y\u20130.05",
+      "model": "M1_C",
+      "observed_mean_min": 34.6,
+      "observed_sample_sd_min": 4.3,
+      "n": 5,
+      "dirlik_min": 157.8,
+      "steinberg_min": 3283.7,
+      "dirlik_ratio_recomputed": 4.5606936416184976,
+      "steinberg_ratio_recomputed": 94.90462427745663,
+      "dirlik_ratio_printed": 4.5,
+      "steinberg_ratio_printed": 94.9,
+      "source": "Tables 2.1 (p. 4) and 5.3 (p. 7)",
+      "note": ""
+    },
+    {
+      "component": "VDR3",
+      "case": "Y\u20130.05",
+      "model": "M3_C",
+      "observed_mean_min": 34.6,
+      "observed_sample_sd_min": 4.3,
+      "n": 5,
+      "dirlik_min": 251.4,
+      "steinberg_min": 1553.5,
+      "dirlik_ratio_recomputed": 7.265895953757226,
+      "steinberg_ratio_recomputed": 44.898843930635834,
+      "dirlik_ratio_printed": 7.2,
+      "steinberg_ratio_printed": 44.9,
+      "source": "Tables 2.1 (p. 4) and 5.3 (p. 7)",
+      "note": ""
+    }
+  ],
+  "baseline_error_factors": [
+    {
+      "component": "VDR3",
+      "case": "Y\u20130.05",
+      "model": "M1_C",
+      "damping_ratio": 0.01,
+      "dirlik_error_factor_printed": 0.04,
+      "steinberg_error_factor_printed": 0.01,
+      "source": "Table 5.1, p. 7"
+    },
+    {
+      "component": "VDR3",
+      "case": "Y\u20130.05",
+      "model": "M1",
+      "damping_ratio": 0.01,
+      "dirlik_error_factor_printed": 0.2,
+      "steinberg_error_factor_printed": 3.3,
+      "source": "Table 5.1, p. 7"
+    },
+    {
+      "component": "VDR3",
+      "case": "Y\u20130.05",
+      "model": "M3_C",
+      "damping_ratio": 0.01,
+      "dirlik_error_factor_printed": 0.03,
+      "steinberg_error_factor_printed": 0.01,
+      "source": "Table 5.1, p. 7"
+    },
+    {
+      "component": "VDR3",
+      "case": "Y\u20130.05",
+      "model": "M3",
+      "damping_ratio": 0.01,
+      "dirlik_error_factor_printed": 5.4,
+      "steinberg_error_factor_printed": 4.5,
+      "source": "Table 5.1, p. 7"
+    },
+    {
+      "component": "C14",
+      "case": "X\u20130.20",
+      "model": "M1_C",
+      "damping_ratio": 0.01,
+      "dirlik_error_factor_printed": 0.04,
+      "steinberg_error_factor_printed": 0.02,
+      "source": "Table 5.1, p. 7"
+    },
+    {
+      "component": "C14",
+      "case": "X\u20130.20",
+      "model": "M1",
+      "damping_ratio": 0.01,
+      "dirlik_error_factor_printed": 0.6,
+      "steinberg_error_factor_printed": 5.0,
+      "source": "Table 5.1, p. 7"
+    },
+    {
+      "component": "C14",
+      "case": "X\u20130.20",
+      "model": "M3_C",
+      "damping_ratio": 0.01,
+      "dirlik_error_factor_printed": 0.03,
+      "steinberg_error_factor_printed": 0.005,
+      "source": "Table 5.1, p. 7"
+    },
+    {
+      "component": "C14",
+      "case": "X\u20130.20",
+      "model": "M3",
+      "damping_ratio": 0.01,
+      "dirlik_error_factor_printed": 2.0,
+      "steinberg_error_factor_printed": 0.3,
+      "source": "Table 5.1, p. 7"
+    },
+    {
+      "component": "VDR3",
+      "case": "X\u20130.20",
+      "model": "M1_C",
+      "damping_ratio": 0.01,
+      "dirlik_error_factor_printed": 0.3,
+      "steinberg_error_factor_printed": 0.2,
+      "source": "Table 5.1, p. 7"
+    },
+    {
+      "component": "VDR3",
+      "case": "X\u20130.20",
+      "model": "M1",
+      "damping_ratio": 0.01,
+      "dirlik_error_factor_printed": 5.5,
+      "steinberg_error_factor_printed": 191.4,
+      "source": "Table 5.1, p. 7"
+    },
+    {
+      "component": "VDR3",
+      "case": "X\u20130.20",
+      "model": "M3_C",
+      "damping_ratio": 0.01,
+      "dirlik_error_factor_printed": 0.2,
+      "steinberg_error_factor_printed": 0.1,
+      "source": "Table 5.1, p. 7"
+    },
+    {
+      "component": "VDR3",
+      "case": "X\u20130.20",
+      "model": "M3",
+      "damping_ratio": 0.01,
+      "dirlik_error_factor_printed": 17.3,
+      "steinberg_error_factor_printed": 1.2,
+      "source": "Table 5.1, p. 7"
+    }
+  ],
+  "measured_modal_data": [
+    {
+      "mode": "VDR3 Mode 1",
+      "frequency_hz": 230.0,
+      "damping_ratio": 0.0389,
+      "damping_percent": 3.89,
+      "response_axis": "Y",
+      "source": "Table 5.2 and Fig. 7, p. 7"
+    },
+    {
+      "mode": "C14 Mode 1",
+      "frequency_hz": 533.6,
+      "damping_ratio": 0.018,
+      "damping_percent": 1.8,
+      "response_axis": "X",
+      "source": "Table 5.2 and Fig. 7, p. 7"
+    },
+    {
+      "mode": "PCB Mode 1",
+      "frequency_hz": 937.5,
+      "damping_ratio": 0.0101,
+      "damping_percent": 1.01,
+      "response_axis": "Z",
+      "source": "Table 5.2 and Fig. 7, p. 7"
+    }
+  ],
+  "sobol_fig9": [
+    {
+      "parameter": "b",
+      "first_order": 0.24,
+      "total_effect": 0.81
+    },
+    {
+      "parameter": "log10(A)",
+      "first_order": 0.18,
+      "total_effect": 0.77
+    }
+  ],
+  "fig6_stress_components_rms_mpa": {
+    "sigma_xx": 16.27,
+    "sigma_yy": 24.75,
+    "sigma_zz": 134.54,
+    "tau_xy": 6.18,
+    "tau_yz": 54.66,
+    "tau_xz": 3.27
+  },
+  "fig6_case": "M1_C_VDR3_0.2",
+  "fatigue_parameters": {
+    "A": 1.7e+17,
+    "b": 5.0,
+    "stress_unit": "MPa",
+    "relation": "N=A*S**(-b)",
+    "source": "\u00a75.1, p. 6; adopted archival annealed-copper data, not newly measured S\u2013N data"
+  },
+  "scope_notes": [
+    "X and Y cases change direction AND excitation magnitude; they do not isolate amplitude effects.",
+    "C14 Y case is right-censored at 90 min, not a 90 min failure.",
+    "Chart ratios must be recomputed from published lifetimes because Table 5.3 C14 M1_C printed error factor is inconsistent.",
+    "Three of four high-excitation calibrated Dirlik comparisons are within factor two; M3_C C14 gives 0.4031 (2.48-fold underprediction).",
+    "Y VDR3 calibrated Dirlik overpredicts mean life by 4.56\u20137.27 times."
+  ]
+}

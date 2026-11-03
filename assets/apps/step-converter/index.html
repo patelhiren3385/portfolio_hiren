@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f2eb">
+  <meta name="description" content="Hiren Patel’s PCB preparation workflow: recover component bodies and lead information from STEP and Sherlock placement data, review the evidence, and retain the Sherlock mesh in Mechanical.">
+  <title>From CAD files to a simulation-ready PCB · Hiren Patel</title>
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;650;700&family=Manrope:wght@400;500;600;650;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../style.css">
+  <link rel="stylesheet" href="../../converter-showcase.css">
+</head>
+<body class="converter-page">
+  <a class="skip-link" href="#main">Skip to the workflow</a>
+  <header class="cv-page-header"><div class="cv-page-shell"><a class="cv-page-brand" href="../../../index.html">Hiren Patel <span>ENGINEERING SOFTWARE</span></a><a class="cv-page-back" href="../../../index.html#step-converter"><span aria-hidden="true">←</span> Back to the portfolio</a></div></header>
+
+  <main id="main" class="cv-page-shell">
+    <section class="cv-page-hero" aria-labelledby="page-title">
+      <p class="eyebrow">STEP CONVERTER / GEOMETRY TO ANALYSIS</p>
+      <h1 id="page-title">How do CAD files become a <span class="muted">simulation-ready PCB?</span></h1>
+      <p class="cv-page-lead">A PCB assembly can look complete in CAD while still missing the component parameters an engineering model needs. I built a tool to connect placement data, body geometry and lead information—and make each update traceable.</p>
+      <nav class="cv-page-nav" aria-label="On this page"><a href="#workflow">The complete flow</a><a href="#component-detail">Geometry &amp; leads</a><a href="#mesh-transfer">Retaining the mesh</a><a href="#evidence">Source &amp; scope</a></nav>
+      <div class="cv-page-gallery">
+        <figure class="cv-photo cv-photo-board"><a href="../../evidence/converter/kicad-pcb-reference.png" target="_blank" rel="noopener noreferrer" aria-label="Open the public KiCad PCB assembly reference"><div class="cv-photo-frame"><img src="../../evidence/converter/kicad-pcb-reference.png" width="1280" height="845" alt="KiCad’s public 3D Viewer screenshot showing a populated purple circuit board, component bodies, connectors and the layer panel" loading="lazy"></div></a><figcaption><strong>The complete assembly</strong><span>Public reference · <a href="https://www.kicad.org/blog/2024/02/Version-8.0.0-Released/" target="_blank" rel="noopener noreferrer">KiCad 3D Viewer</a></span><span>KiCad project · <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="noopener noreferrer">CC BY 3.0</a></span></figcaption></figure>
+        <figure class="cv-photo cv-photo-leads"><a href="../../evidence/converter/lqfp-leads-reference.jpg" target="_blank" rel="noopener noreferrer" aria-label="Open the public component and lead photograph"><div class="cv-photo-frame"><img src="../../evidence/converter/lqfp-leads-reference.jpg" width="1280" height="1280" alt="Real STM32 chip on a circuit board, with its square component body, four rows of gull-wing leads and solder pads clearly visible" loading="lazy"></div></a><figcaption><strong>Body, leads and connections</strong><span>Public hardware reference</span><span>© Raimond Spekking / <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a> (via <a href="https://commons.wikimedia.org/wiki/File:STMicroelectronics_STM32F303-4570.jpg" target="_blank" rel="noopener noreferrer">Wikimedia Commons</a>)</span></figcaption></figure>
+      </div>
+      <p class="cv-image-note">Public reference images show the two scales the workflow connects: a populated PCB assembly and the physical leads of a component. The tool’s implementation and validation evidence are described below.</p>
+    </section>
+
+    <section id="workflow" class="cv-page-section" aria-labelledby="workflow-title">
+      <div class="cv-section-heading"><div><p class="eyebrow">THE COMPLETE FLOW</p><h2 id="workflow-title">Automate the extraction.<br>Keep the engineering review.</h2></div><p>The tool brings the files into a shared coordinate frame, measures supported geometry and writes an updated component list. Review resolves uncertain matches and assumptions before the model moves into Sherlock and Ansys.</p></div>
+      <ol class="cv-pipeline" aria-label="PCB preparation and downstream analysis sequence">
+        <li><span class="cv-stage-kind">INPUTS</span><strong>STEP + placement</strong><p>STEP assembly and the Sherlock part list derived from ODB++.</p></li>
+        <li class="cv-stage-auto"><span class="cv-stage-kind">AUTOMATIC</span><strong>Align &amp; enrich</strong><p>Match components; extract dimensions and supported terminals.</p></li>
+        <li class="cv-stage-review"><span class="cv-stage-kind">ENGINEERING REVIEW</span><strong>Review &amp; import</strong><p>Resolve flagged matches, rotations and estimates. Import the CSV.</p></li>
+        <li><span class="cv-stage-kind">SHERLOCK</span><strong>Generate the mesh</strong><p>Build the FE model from the reviewed component data.</p></li>
+        <li><span class="cv-stage-kind">ANSYS INTEGRATION</span><strong>CDB → Mechanical</strong><p>Import through External Model; complete analysis setup.</p></li>
+      </ol>
+      <p class="cv-integration-note">The reviewed tool takes STEP/STP and a Sherlock CSV, XLS or XLSX part list. ODB++ supplies the upstream component identity and placement through Sherlock. This release detects pad candidates in the STEP geometry.</p>
+    </section>
+
+    <section id="component-detail" class="cv-page-section" aria-labelledby="component-title">
+      <div class="cv-section-heading"><div><p class="eyebrow">01 / COMPONENT INTELLIGENCE</p><h2 id="component-title">What is the body?<br>Where do the leads connect?</h2></div><p>Part names, coordinates and CAD solids do not always line up. The tool aligns component centres, accounts for board side and orientation, and measures each matched component in its local frame.</p></div>
+      <div class="cv-detail-grid">
+        <article class="cv-detail-panel"><span class="cv-tag">MEASURED FROM GEOMETRY</span><h3>Use the detail already in the STEP.</h3><p>Recover body dimensions, supported cylindrical or rounded shapes, and existing terminal sections. Supported fused body-and-pin shapes are separated so pin insertion does not inflate the package height.</p></article>
+        <article class="cv-detail-panel"><span class="cv-tag cv-tag-assumed">INFERRED · REQUIRES REVIEW</span><h3>Make missing information explicit.</h3><p>Compatible pad layouts and package information can supply lead-layout proposals and marked dimensional estimates. A pad or drilled hole alone does not establish the manufactured terminal’s thickness, shape or electrical identity.</p></article>
+      </div>
+      <p class="cv-geometry-note"><strong>The useful difference:</strong> a dimension measured from a solid and a dimension inferred from a package assumption remain distinguishable in the output. Ambiguous matches, unsupported shapes and uncertain rotations remain visible to the engineer.</p>
+      <table class="cv-output-table">
+        <caption>What the tool delivers</caption>
+        <thead><tr><th scope="col">Deliverable</th><th scope="col">What the engineer can use</th></tr></thead>
+        <tbody>
+          <tr><td>Updated component list</td><td><span class="cv-source-code">Parts_updated.csv</span> carries supported body and lead parameters into the native Sherlock part model, preserving the original column order and applicable units.</td></tr>
+          <tr><td>Traceable changes</td><td>The HTML report, change log and audit connect each changed field to its measurement or assumption. Rotation overlays and through-hole diagnostics focus review on unresolved details.</td></tr>
+          <tr><td>Detailed CAD companion</td><td>Per-part and assembly STEP files retain matched source solids, including details that scalar part-list fields cannot express. Newly proposed lead solids are explicitly labelled.</td></tr>
+        </tbody>
+      </table>
+      <p class="cv-integration-note">The detailed STEP is a separate CAD route. It does not automatically replace native Sherlock components or update an existing mesh. Combining it with another model requires alignment, connection definitions and removal of duplicate geometry.</p>
+    </section>
+
+    <section id="mesh-transfer" class="cv-page-section" aria-labelledby="mesh-title">
+      <div class="cv-section-heading"><div><p class="eyebrow">02 / MESH CONTINUITY</p><h2 id="mesh-title">Carry the mesh<br>into Mechanical.</h2></div><p>The second capability connects PCB preparation to the analysis environment. Geometry enrichment happens before meshing; mesh transfer then preserves the FE discretisation already generated in Sherlock.</p></div>
+      <div class="cv-mesh-route" aria-label="Mesh transfer route"><strong>Sherlock mesh</strong><span aria-hidden="true">→</span><strong>Blocked CDB</strong><span aria-hidden="true">→</span><strong>Workbench External Model</strong><span aria-hidden="true">→</span><strong>Mechanical</strong></div>
+      <p class="cv-mesh-copy">Ansys documents this meshed-model route through CDB and External Model. It retains structured regions where they exist in the source mesh; the element topology depends on the Sherlock model. Materials, connections, supports and loads still need the appropriate analysis setup. <a href="https://ansyshelp.ansys.com/public/Views/Secured/corp/v261/en/sherlock_ug/sherlock_ug_ch_ansys_workb_integr01.html" target="_blank" rel="noopener noreferrer">Ansys workflow reference ↗</a></p>
+      <p class="cv-integration-note">Automatic geometry enrichment ends at the exported data. Engineering review, Sherlock model generation and Mechanical setup complete the downstream workflow.</p>
+    </section>
+
+    <section class="cv-page-section" aria-labelledby="industry-title">
+      <div class="cv-section-heading"><div><p class="eyebrow">WHY AN ENGINEERING TEAM CARES</p><h2 id="industry-title">Better inputs for<br>the next design decision.</h2></div><p>The transferable capability is connecting electronics design data, mechanical geometry and simulation—with an audit trail that engineers can inspect.</p></div>
+      <div class="cv-application-row">
+        <article><h3>Industrial equipment</h3><p>Prepare populated boards for vibration and thermo-mechanical assessment in pumps, drives and control hardware.</p></article>
+        <article><h3>Power electronics</h3><p>Carry component dimensions and mounting details into models used to assess thermal expansion and mechanical loading.</p></article>
+        <article><h3>Space hardware</h3><p>Build the PCB model that supports mount-layout and heat-conduction studies when screw towers provide key thermal paths.</p></article>
+      </div>
+      <p class="cv-image-note">These are application areas for the workflow, rather than claims of completed deployments in each sector.</p>
+
+      <details id="evidence" class="cv-scope">
+        <summary>Implementation, source images and validation scope</summary>
+        <p><strong>Source reviewed:</strong> <span class="cv-source-code">Sherlock_STEP_Updater_v1.4.zip</span>, including its README, user guide and Python implementation. The core functions are <span class="cv-source-code">prepare()</span> and <span class="cv-source-code">run()</span> in the engine; <span class="cv-source-code">read_model()</span> and <span class="cv-source-code">measure_component()</span> for CAD; <span class="cv-source-code">match_rows()</span> for matching; <span class="cv-source-code">infer_leads()</span> for inference; and <span class="cv-source-code">export_detailed()</span> for the companion geometry.</p>
+        <p><strong>Validation scope:</strong> the release includes synthetic STEP examples, automated checks and recorded reports. The referenced production STEP was unavailable for that release’s validation, and native Windows GUI operation and Sherlock import were not executed for v1.4. No new production conversion, mesh or stress result is claimed on this page.</p>
+        <p><strong>Current boundaries:</strong> through-hole and fused-terminal cases can remain unresolved; pad-derived leads are assumptions; native CSV fields express supported parametric geometry. The CAD companion does not assign materials, contacts, mesh or loads.</p>
+
+        <p class="cv-source-meta">The KiCad screenshot and Wikimedia component photograph are credited public references. Both are displayed without cropping; the component photo uses Wikimedia’s 1280-pixel rendition. <a href="../../evidence/converter/provenance.json" target="_blank" rel="noopener noreferrer">Inspect image credits and implementation references ↗</a></p>
+      </details>
+    </section>
+  </main>
+
+  <footer class="cv-page-shell cv-page-footer"><a href="../../../index.html#step-converter">← Return to the portfolio</a><span>Hiren Patel · Engineering software</span></footer>
+</body>
+</html>

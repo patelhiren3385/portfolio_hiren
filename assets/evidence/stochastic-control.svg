@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1320" height="780" viewBox="0 0 1320 780" role="img" aria-labelledby="title desc">
+  <title id="title">Stochastic reduced-order vibration control</title>
+  <desc id="desc">An explanatory map of Hiren Patel and coauthors' SICE 2020 work: manufacturing and measurement variation is represented through non-Gaussian random system parameters. A high-fidelity finite-element model is reduced; the feedback gain is calculated using reduced-space LQR and used to drive actuators. A numerical flexible-cantilever example is assessed through Monte Carlo probabilistic characterization. This map contains no invented distributions, sample counts, or response data.</desc>
+  <defs>
+    <marker id="flow-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1 1 9 5 1 9" fill="none" stroke="#dc5a32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+    <pattern id="fine-grid" width="18" height="18" patternUnits="userSpaceOnUse"><path d="M18 0H0V18" fill="none" stroke="#202b27" stroke-opacity=".045"/></pattern>
+    <pattern id="clamp-hatch" width="8" height="8" patternUnits="userSpaceOnUse"><path d="M-1 1 7 9M3-3 11 5" fill="none" stroke="#bfcdad" stroke-width="1.5"/></pattern>
+    <style>
+      text{font-family:Arial,Helvetica,sans-serif;fill:#202b27}
+      .muted{fill:#586653}.orange{fill:#a6472c}.mono{font-family:monospace;letter-spacing:.6px}
+      .flow{fill:none;stroke:#dc5a32;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#flow-arrow)}
+    </style>
+  </defs>
+  <rect width="1320" height="780" fill="#f4f2eb"/>
+  <rect x="1040" width="280" height="170" fill="url(#fine-grid)"/>
+  <circle cx="62" cy="41" r="5" fill="#dc5a32"/>
+  <text x="80" y="48" font-size="20" class="mono orange">HIREN PATEL / STOCHASTIC CONTROL</text>
+  <text x="1260" y="48" text-anchor="end" font-size="20" class="mono muted">SICE 2020</text>
+  <text x="58" y="108" font-size="46" font-weight="600" letter-spacing="-1.5">Control when model parameters vary.</text>
+  <text x="60" y="147" font-size="25" class="muted">Connect structural uncertainty, reduced models, and feedback control.</text>
+
+  <!-- Five grounded stages, with no plotted or simulated numerical results. -->
+  <rect x="60" y="184" width="348" height="196" rx="4" fill="#e8ecdf"/>
+  <text x="84" y="220" font-size="20" class="mono muted">01 / ENGINEERING INPUT</text>
+  <text x="84" y="266" font-size="28" font-weight="600">Manufacturing +</text>
+  <text x="84" y="301" font-size="28" font-weight="600">measurement variation</text>
+  <text x="84" y="351" font-size="21" class="muted">System parameters can vary.</text>
+  <path d="M417 282H437" class="flow"/>
+
+  <rect x="448" y="184" width="366" height="196" rx="4" fill="#ede9de"/>
+  <text x="472" y="220" font-size="20" class="mono muted">02 / UNCERTAINTY MODEL</text>
+  <text x="472" y="266" font-size="29" font-weight="600">Non-Gaussian</text>
+  <text x="472" y="302" font-size="29" font-weight="600">random parameters</text>
+  <text x="472" y="351" font-size="21" class="muted">Represent the variability.</text>
+  <path d="M631 389V401H234V413" class="flow"/>
+
+  <rect x="60" y="424" width="348" height="186" rx="4" fill="#e7eae1"/>
+  <text x="84" y="460" font-size="20" class="mono muted">03 / STRUCTURAL MODEL</text>
+  <text x="84" y="503" font-size="27" font-weight="600">FE → reduced model</text>
+  <text x="84" y="535" font-size="21" class="muted">Reduce the state-space size.</text>
+  <g transform="translate(85 553)">
+    <rect width="128" height="37" fill="#d1dcc5" stroke="#8da17d" stroke-width="1.5"/>
+    <path d="M0 9H128M0 18H128M0 27H128M16 0V37M32 0V37M48 0V37M64 0V37M80 0V37M96 0V37M112 0V37" stroke="#91a280" stroke-width="1"/>
+    <path d="M145 19H180" class="flow"/>
+    <rect x="198" y="5" width="58" height="28" fill="#b8c8a7" stroke="#718864" stroke-width="1.5"/>
+    <path d="M198 19H256M227 5V33" stroke="#718864" stroke-width="1.5"/>
+  </g>
+  <path d="M417 517H437" class="flow"/>
+
+  <rect x="448" y="424" width="366" height="186" rx="4" fill="#e8ecdf"/>
+  <text x="472" y="460" font-size="20" class="mono muted">04 / CONTROL DESIGN</text>
+  <text x="472" y="503" font-size="29" font-weight="600">Reduced-space LQR</text>
+  <text x="472" y="546" font-size="22" class="muted">Compute the feedback gain.</text>
+  <text x="472" y="580" font-size="22" class="muted">Drive the beam actuators.</text>
+  <path d="M823 517H843" class="flow"/>
+
+  <rect x="854" y="184" width="406" height="426" rx="4" fill="#202b27"/>
+  <text x="880" y="220" font-size="20" class="mono" style="fill:#bfcdad">05 / NUMERICAL ASSESSMENT</text>
+  <text x="880" y="272" font-size="36" font-weight="600" style="fill:#f4f2eb">Monte Carlo</text>
+  <text x="880" y="314" font-size="36" font-weight="600" style="fill:#f4f2eb">characterization</text>
+  <text x="880" y="357" font-size="22" style="fill:#bfcdad">Numerical cantilever benchmark</text>
+
+  <!-- The cantilever is a physical-system schematic, not a deformation plot. -->
+  <rect x="884" y="393" width="17" height="61" fill="url(#clamp-hatch)"/>
+  <path d="M901 391V455" stroke="#bfcdad" stroke-width="3"/>
+  <rect x="902" y="415" width="309" height="15" fill="#9fb58d" stroke="#bfcdad" stroke-width="1.5"/>
+  <path d="M1100 376V405" class="flow"/>
+  <text x="1117" y="396" font-size="23" font-style="italic" style="fill:#f4f2eb">u(t)</text>
+  <path d="M880 476H1230" stroke="#bfcdad" stroke-opacity=".28"/>
+  <text x="880" y="522" font-size="23" style="fill:#f4f2eb">Assess structural response</text>
+  <text x="880" y="556" font-size="23" style="fill:#f4f2eb">across uncertain parameters.</text>
+  <text x="880" y="589" font-size="20" style="fill:#bfcdad">Probabilistic characterization</text>
+
+  <rect x="60" y="638" width="1200" height="82" rx="4" fill="#dce3d3"/>
+  <path d="M450 655V703M850 655V703" stroke="#aab89b"/>
+  <text x="84" y="669" font-size="20" class="mono muted">CAPABILITY</text>
+  <text x="84" y="701" font-size="25" font-weight="600">Uncertainty modeling</text>
+  <text x="477" y="669" font-size="20" class="mono muted">CAPABILITY</text>
+  <text x="477" y="701" font-size="25" font-weight="600">Reduced-order control</text>
+  <text x="877" y="669" font-size="20" class="mono muted">CAPABILITY</text>
+  <text x="877" y="701" font-size="25" font-weight="600">Statistical assessment</text>
+  <text x="60" y="755" font-size="20" class="muted">Explanatory method map · Patel, Kumar &amp; Ali, SICE 2020 · Based on the published abstract.</text>
+</svg>

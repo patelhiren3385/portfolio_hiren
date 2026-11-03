@@ -1,0 +1,33 @@
+{
+  "asset": "serep-published-loop.png",
+  "source_title": "SEREP Integrated Control of Flexible Structures",
+  "authors": [
+    "Hiren Patel",
+    "Rahul Kumar",
+    "Shaikh Faruque Ali"
+  ],
+  "doi": "10.1016/j.ifacol.2020.06.009",
+  "publication": "IFAC-PapersOnLine 53(1), 51\u201356 (2020)",
+  "figure": 2,
+  "printed_page": 54,
+  "pdf_page": 4,
+  "source": "User-supplied full publication PDF",
+  "operation": "Direct rasterization of original figure rectangle; no generated content or reconstructed labels.",
+  "source_page_points": [
+    0.0,
+    0.0,
+    595.2755737304688,
+    841.8897705078125
+  ],
+  "crop_points": [
+    64.70386670983356,
+    69.37359840776666,
+    264.6976365402282,
+    151.09334568471218
+  ],
+  "raster_size": [
+    1001,
+    410
+  ],
+  "copyright": "IFAC, 2020"
+}

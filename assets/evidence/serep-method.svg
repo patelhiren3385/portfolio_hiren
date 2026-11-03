@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1320" height="780" viewBox="0 0 1320 780" role="img" aria-labelledby="title desc">
+  <title id="title">SEREP: fewer coordinates, better control</title>
+  <desc id="desc">An explanatory schematic of Hiren Patel and coauthors' published numerical beam-control study. A full model with 402 degrees of freedom and 804 states is compared with a 96-degree uniform selection that misses actuator junctions and a 38-degree selection retaining those junctions. The latter achieves stronger vibration suppression with a reported 97.5 percent reduction in computational cost. Coordinate markers are illustrative, not the paper's exact node map. No response data are simulated here.</desc>
+  <defs>
+    <marker id="flow-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1 1 9 5 1 9" fill="none" stroke="#dc5a32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+    <pattern id="clamp-hatch" width="7" height="7" patternUnits="userSpaceOnUse"><path d="M-1 1 6 8M3-3 10 4" fill="none" stroke="#879879" stroke-width="1.5"/></pattern>
+    <pattern id="mesh" width="20" height="18" patternUnits="userSpaceOnUse"><path d="M0 0V18M0 0 20 18" fill="none" stroke="#a0ad93" stroke-width="1"/></pattern>
+    <pattern id="fine-grid" width="18" height="18" patternUnits="userSpaceOnUse"><path d="M18 0H0V18" fill="none" stroke="#202b27" stroke-opacity=".045"/></pattern>
+    <style>
+      text{font-family:Arial,Helvetica,sans-serif;fill:#202b27}
+      .muted{fill:#586653}.orange{fill:#a6472c}.mono{font-family:monospace;letter-spacing:1px}
+      .beam{fill:#e0e6d7;stroke:#7d9071;stroke-width:2}
+      .patch{fill:#d9a082;stroke:#b45d3b;stroke-width:1.5}
+      .node{fill:#7d9071;stroke:#f4f2eb;stroke-width:1.5}
+      .critical{fill:#dc5a32;stroke:#f4f2eb;stroke-width:1.5}
+      .missed{fill:none;stroke:#dc5a32;stroke-width:2;stroke-dasharray:3 3}
+      .flow{fill:none;stroke:#dc5a32;stroke-width:2.5;marker-end:url(#flow-arrow)}
+    </style>
+  </defs>
+  <rect width="1320" height="780" fill="#f4f2eb"/>
+  <rect x="1040" width="280" height="170" fill="url(#fine-grid)"/>
+  <circle cx="62" cy="41" r="5" fill="#dc5a32"/>
+  <text x="80" y="48" font-size="20" class="mono orange">HIREN PATEL / REDUCED-ORDER CONTROL</text>
+  <text x="1260" y="48" text-anchor="end" font-size="20" class="mono muted">IFAC 2020</text>
+  <text x="58" y="108" font-size="46" font-weight="600" letter-spacing="-1.5">Fewer coordinates. Better control.</text>
+  <text x="60" y="147" font-size="25" class="muted">Keep the actuator junctions when reducing a flexible beam.</text>
+
+  <!-- Coordinate comparison. The marker counts and positions are schematic. -->
+  <rect x="60" y="180" width="760" height="405" rx="4" fill="#e8ecdf"/>
+  <text x="84" y="216" font-size="20" class="mono muted">MODELS COMPARED</text>
+  <text x="550" y="216" font-size="20" text-anchor="middle" class="muted">Two piezoelectric actuators</text>
+  <path d="M84 325H794M84 448H794" stroke="#c9d1bf"/>
+
+  <text x="84" y="263" font-size="32" font-weight="600">402 DOF</text>
+  <text x="84" y="293" font-size="21" class="muted">Full FE · 804 states</text>
+  <rect x="334" y="248" width="14" height="52" fill="url(#clamp-hatch)"/>
+  <path d="M348 246V300" stroke="#7d9071" stroke-width="3"/>
+  <rect x="348" y="266" width="428" height="18" class="beam"/>
+  <rect x="348" y="266" width="428" height="18" fill="url(#mesh)"/>
+  <rect x="420" y="252" width="80" height="14" class="patch"/>
+  <rect x="620" y="252" width="80" height="14" class="patch"/>
+  <g fill="#879879"><circle cx="360" cy="275" r="3"/><circle cx="380" cy="275" r="3"/><circle cx="400" cy="275" r="3"/><circle cx="420" cy="275" r="3"/><circle cx="440" cy="275" r="3"/><circle cx="460" cy="275" r="3"/><circle cx="480" cy="275" r="3"/><circle cx="500" cy="275" r="3"/><circle cx="520" cy="275" r="3"/><circle cx="540" cy="275" r="3"/><circle cx="560" cy="275" r="3"/><circle cx="580" cy="275" r="3"/><circle cx="600" cy="275" r="3"/><circle cx="620" cy="275" r="3"/><circle cx="640" cy="275" r="3"/><circle cx="660" cy="275" r="3"/><circle cx="680" cy="275" r="3"/><circle cx="700" cy="275" r="3"/><circle cx="720" cy="275" r="3"/><circle cx="740" cy="275" r="3"/><circle cx="760" cy="275" r="3"/></g>
+
+  <text x="84" y="365" font-size="32" font-weight="600">96 DOF</text>
+  <text x="84" y="396" font-size="21" class="muted">Uniform selection</text>
+  <text x="84" y="425" font-size="20" class="orange">Junctions omitted</text>
+  <rect x="334" y="370" width="14" height="52" fill="url(#clamp-hatch)"/>
+  <path d="M348 368V422" stroke="#7d9071" stroke-width="3"/>
+  <rect x="348" y="388" width="428" height="18" class="beam"/>
+  <rect x="420" y="374" width="80" height="14" class="patch"/>
+  <rect x="620" y="374" width="80" height="14" class="patch"/>
+  <g class="node"><circle cx="360" cy="397" r="5"/><circle cx="400" cy="397" r="5"/><circle cx="440" cy="397" r="5"/><circle cx="480" cy="397" r="5"/><circle cx="520" cy="397" r="5"/><circle cx="560" cy="397" r="5"/><circle cx="600" cy="397" r="5"/><circle cx="640" cy="397" r="5"/><circle cx="680" cy="397" r="5"/><circle cx="720" cy="397" r="5"/><circle cx="760" cy="397" r="5"/></g>
+  <g class="missed"><circle cx="420" cy="397" r="9"/><circle cx="500" cy="397" r="9"/><circle cx="620" cy="397" r="9"/><circle cx="700" cy="397" r="9"/></g>
+
+  <text x="84" y="493" font-size="32" font-weight="600" class="orange">38 DOF</text>
+  <text x="84" y="524" font-size="21" class="muted">Critical junctions</text>
+  <text x="84" y="553" font-size="21" class="muted">retained</text>
+  <rect x="334" y="491" width="14" height="52" fill="url(#clamp-hatch)"/>
+  <path d="M348 489V543" stroke="#7d9071" stroke-width="3"/>
+  <rect x="348" y="509" width="428" height="18" class="beam"/>
+  <rect x="420" y="495" width="80" height="14" class="patch"/>
+  <rect x="620" y="495" width="80" height="14" class="patch"/>
+  <g class="node"><circle cx="366" cy="518" r="5"/><circle cx="460" cy="518" r="5"/><circle cx="552" cy="518" r="5"/><circle cx="590" cy="518" r="5"/><circle cx="746" cy="518" r="5"/></g>
+  <g class="critical"><circle cx="420" cy="518" r="7"/><circle cx="500" cy="518" r="7"/><circle cx="620" cy="518" r="7"/><circle cx="700" cy="518" r="7"/></g>
+  <path d="M420 531V551M500 531V551M620 531V551M700 531V551" stroke="#dc5a32" stroke-opacity=".65" stroke-width="1.5"/>
+
+  <!-- Exact published computational-cost result, with study scope retained. -->
+  <rect x="846" y="180" width="414" height="405" rx="4" fill="#202b27"/>
+  <text x="874" y="218" font-size="20" class="mono" style="fill:#bfcdad">PUBLISHED NUMERICAL RESULT</text>
+  <text x="870" y="313" font-size="87" font-weight="600" letter-spacing="-4" style="fill:#f4f2eb">97.5%</text>
+  <text x="875" y="351" font-size="25" style="fill:#f4f2eb">less computational cost</text>
+  <text x="875" y="382" font-size="20" style="fill:#bfcdad">38-DOF case vs. full model</text>
+  <path d="M875 407H1230" stroke="#bfcdad" stroke-opacity=".28"/>
+  <text x="875" y="447" font-size="25" font-weight="600" style="fill:#f4f2eb">Better node selection.</text>
+  <text x="875" y="480" font-size="25" font-weight="600" style="fill:#f4f2eb">Stronger suppression.</text>
+  <text x="875" y="526" font-size="21" style="fill:#bfcdad">Retaining actuator junctions</text>
+  <text x="875" y="556" font-size="21" style="fill:#bfcdad">outperformed uniform spacing.</text>
+
+  <text x="60" y="622" font-size="20" class="mono muted">THE ENGINEERING CHAIN</text>
+  <g>
+    <rect x="60" y="638" width="270" height="80" rx="3" fill="#dce3d3"/>
+    <text x="80" y="670" font-size="24" font-weight="600">Coupled FE model</text>
+    <text x="80" y="700" font-size="20" class="muted">Beam + piezo coupling</text>
+    <path d="M339 678H357" class="flow"/>
+    <rect x="368" y="638" width="270" height="80" rx="3" fill="#dce3d3"/>
+    <text x="388" y="670" font-size="24" font-weight="600">SEREP reduction</text>
+    <text x="388" y="700" font-size="20" class="muted">Preserve key dynamics</text>
+    <path d="M647 678H665" class="flow"/>
+    <rect x="676" y="638" width="270" height="80" rx="3" fill="#dce3d3"/>
+    <text x="696" y="670" font-size="24" font-weight="600">Reduced LQR</text>
+    <text x="696" y="700" font-size="20" class="muted">Solve reduced Riccati</text>
+    <path d="M955 678H973" class="flow"/>
+    <rect x="984" y="638" width="276" height="80" rx="3" fill="#dce3d3"/>
+    <text x="1004" y="670" font-size="24" font-weight="600">Full-model feedback</text>
+    <text x="1004" y="700" font-size="20" class="muted">Drive beam actuators</text>
+  </g>
+  <text x="60" y="754" font-size="20" class="muted">Source: Patel, Kumar &amp; Ali, IFAC 2020, §§3–5.1. Coordinate markers are schematic.</text>
+</svg>

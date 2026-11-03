@@ -1,0 +1,46 @@
+[
+  {
+    "file": "dmc-static-distribution.png",
+    "source": "../../papers/dmc-2026-digest.pdf",
+    "pdf_page": 4,
+    "xref": 6,
+    "soft_mask_xref": 9,
+    "width": 2415,
+    "height": 960,
+    "sha256": "9d36720ab58fd10944992d540caa511be6da7c3d5f30aebe816a7606757675fc",
+    "treatment": "Original embedded image raster with PDF soft mask; no visual alterations."
+  },
+  {
+    "file": "dmc-four-mount-strain-comparison.png",
+    "source": "../../papers/dmc-2026-digest.pdf",
+    "pdf_page": 4,
+    "xref": 7,
+    "soft_mask_xref": 10,
+    "width": 4295,
+    "height": 2032,
+    "sha256": "b63b7fbd6dc33f6c120f950cbe56fb18393751ea4fbd59c0148499c0cf6ec867",
+    "treatment": "Original embedded image raster with PDF soft mask; no visual alterations."
+  },
+  {
+    "file": "dmc-dynamic-acceptance.png",
+    "source": "../../papers/dmc-2026-digest.pdf",
+    "pdf_page": 5,
+    "xref": 12,
+    "soft_mask_xref": 15,
+    "width": 4727,
+    "height": 1797,
+    "sha256": "ec72c39edc9a6420c55e63b80596f9ef5eeb25b2885e9859ff320854a1528b04",
+    "treatment": "Original embedded image raster with PDF soft mask; no visual alterations."
+  },
+  {
+    "file": "dmc-selected-layout-response.png",
+    "source": "../../papers/dmc-2026-digest.pdf",
+    "pdf_page": 5,
+    "xref": 13,
+    "soft_mask_xref": 16,
+    "width": 4729,
+    "height": 1728,
+    "sha256": "baf792a19f5114fea932277db53536c5bef4f5872bb52f9c48f6e05d73e77269",
+    "treatment": "Original embedded image raster with PDF soft mask; no visual alterations."
+  }
+]
