@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f2eb">
+  <meta name="description" content="Select PCB mount layouts, export an FE solver request, and verify model predictions against direct finite-element results.">
+  <title>PCB Mount Layout Studio · Hiren Patel</title>
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@500;600;650;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="model.js"></script>
+  <script defer src="data.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to application</a>
+
+  <header class="site-header">
+    <a class="brand" href="../../../index.html" aria-label="Hiren Patel portfolio home">
+      <span class="brand-mark">hp<span>.</span></span>
+      <span class="brand-copy">Hiren Patel<small>ENGINEER / RESEARCHER</small></span>
+    </a>
+    <nav aria-label="Application sections">
+      <a href="#select">Select layout</a>
+      <a href="#verify">Verify with FE</a>
+      <a href="#evidence">Paper evidence</a>
+    </nav>
+    <a class="back-link" href="../../../index.html#evidence-mount-intelligence"><span aria-hidden="true">←</span> Back to portfolio</a>
+  </header>
+
+  <main id="main">
+    <section class="hero shell" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow"><span></span>PAPER 2 / DESIGN AUTOMATION / INTERACTIVE WORKBENCH</p>
+        <h1 id="page-title">Choose supports.<br><em>Verify the decision.</em></h1>
+        <p class="hero-lead">Build a valid PCB mount layout, export the exact solver request, and compare the model prediction with direct finite-element evidence before accepting the design.</p>
+      </div>
+      <aside class="scope-card" aria-label="Application scope">
+        <span class="scope-number">02</span>
+        <div>
+          <strong>Screening is not verification.</strong>
+          <p>The interactive map checks layout rules and geometric spread. Engineering strain and dynamic acceptance still come from your model and direct FE result.</p>
+        </div>
+      </aside>
+    </section>
+
+    <section class="workflow shell" aria-label="Application workflow">
+      <ol>
+        <li><span>01 / SELECT</span><strong>Choose mount candidates</strong><small>Exact mount count, unique IDs, one mount per region.</small></li>
+        <li><span>02 / SCREEN</span><strong>Inspect geometry</strong><small>Spread, spacing, centroid offset and board-quadrant coverage.</small></li>
+        <li><span>03 / SOLVE</span><strong>Export the FE request</strong><small>Traceable IDs, coordinates, regions, load context and requested outputs.</small></li>
+        <li><span>04 / VERIFY</span><strong>Compare model with FE</strong><small>Numerical error gates plus the actual engineering pass/fail decisions.</small></li>
+      </ol>
+    </section>
+
+    <section class="tool-section shell" id="select" aria-labelledby="select-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">01 / LAYOUT BUILDER</p>
+          <h2 id="select-title">Select mounts without losing the constraints.</h2>
+        </div>
+        <p>Click a candidate or type its ID. A new choice in an occupied region replaces the old one, so the one-mount-per-region rule is visible instead of silently violated.</p>
+      </div>
+
+      <div class="selection-toolbar">
+        <label for="target-count">Required mount count
+          <select id="target-count">
+            <option value="2">2 mounts</option>
+            <option value="3">3 mounts</option>
+            <option value="4" selected>4 mounts</option>
+            <option value="5">5 mounts</option>
+            <option value="6">6 mounts</option>
+          </select>
+        </label>
+        <label class="search-field" for="mount-search">Find by mount ID
+          <span><input id="mount-search" type="text" inputmode="text" autocomplete="off" placeholder="Example: G037" aria-describedby="mount-search-help"><button id="add-mount" type="button">Add</button></span>
+          <small id="mount-search-help">IDs are normalised automatically: g37 becomes G037.</small>
+        </label>
+        <div class="toolbar-actions" aria-label="Layout shortcuts">
+          <button id="load-selected-layout" type="button" class="button button-dark">Load paper-selected layout</button>
+          <button id="clear-selection" type="button" class="button button-outline">Clear</button>
+        </div>
+      </div>
+
+      <div class="selection-layout">
+        <article class="board-card">
+          <div class="card-head">
+            <div><span class="tiny-label">ACTIVE CANDIDATE SET</span><strong id="candidate-source-name">Candidate source</strong></div>
+            <span id="candidate-source-badge" class="source-badge">SCHEMATIC</span>
+          </div>
+          <p id="candidate-source-note" class="source-note"></p>
+
+          <div id="board" class="pcb-board" role="group" aria-label="PCB mount candidate map">
+            <span class="board-label">PCB SUPPORT CANDIDATES</span>
+            <span class="component component-a" aria-hidden="true"></span>
+            <span class="component component-b" aria-hidden="true"></span>
+            <span class="component component-c" aria-hidden="true"></span>
+          </div>
+          <div class="board-legend" aria-label="Board map legend">
+            <span><i class="legend-dot"></i>Available</span>
+            <span><i class="legend-dot selected"></i>Selected</span>
+            <span><i class="legend-dot blocked"></i>Region occupied</span>
+          </div>
+
+          <div class="candidate-import">
+            <div>
+              <strong>Use physical project coordinates</strong>
+              <p>CSV columns: <code>id,x,y,region</code>. Files stay in the browser.</p>
+            </div>
+            <div>
+              <input id="candidate-csv-input" type="file" accept=".csv,text/csv" hidden>
+              <button id="import-candidates" type="button" class="text-button">Import candidate CSV</button>
+              <button id="download-template" type="button" class="text-button">Download current CSV</button>
+            </div>
+          </div>
+        </article>
+
+        <aside class="selection-summary" aria-labelledby="selection-summary-title">
+          <div class="summary-head">
+            <div><span class="tiny-label">CURRENT LAYOUT</span><h3 id="selection-summary-title"><span id="selection-count">0</span> / <span id="target-count-display">4</span> mounts</h3></div>
+            <span id="selection-status" class="status-pill neutral">INCOMPLETE</span>
+          </div>
+          <div id="selected-mounts" class="mount-chips" aria-live="polite"></div>
+          <div id="selection-errors" class="message-list" aria-live="polite"></div>
+
+          <div class="screening-block">
+            <div class="screening-title">
+              <div><span class="tiny-label">GEOMETRY-ONLY SCREEN</span><strong id="geometry-grade">Not ready</strong></div>
+              <span id="geometry-score">—</span>
+            </div>
+            <p>This score describes spatial coverage only. It is deliberately not presented as strain, modal frequency or fatigue prediction.</p>
+            <dl class="metric-list">
+              <div><dt>Convex-hull spread</dt><dd id="metric-spread">—</dd></div>
+              <div><dt>Centroid offset</dt><dd id="metric-centroid">—</dd></div>
+              <div><dt>Minimum spacing</dt><dd id="metric-spacing">—</dd></div>
+              <div><dt>Quadrant coverage</dt><dd id="metric-quadrants">—</dd></div>
+            </dl>
+            <div id="screening-warnings" class="screening-warnings" aria-live="polite"></div>
+          </div>
+
+          <div class="layout-actions">
+            <button id="export-solver-request" type="button" class="button button-dark" disabled>Export solver request</button>
+            <button id="copy-mount-ids" type="button" class="button button-outline" disabled>Copy mount IDs</button>
+          </div>
+          <p class="action-note">The exported request contains the selected geometry and requested outputs. It contains no invented FE response.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="tool-section verification-section shell" id="verify" aria-labelledby="verify-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">02 / MODEL–FE VERIFICATION</p>
+          <h2 id="verify-title">Check prediction error and engineering decisions.</h2>
+        </div>
+        <p>A model is not accepted merely because its values look close. The app also checks whether model and direct FE agree on the strain, board-mode and component-dominance limits.</p>
+      </div>
+
+      <div id="reference-list" class="reference-strip" aria-label="Paper 2 reference cases"></div>
+
+      <div class="result-input-grid">
+        <article class="result-card prediction-card">
+          <div class="result-card-head">
+            <div><span class="tiny-label">METHOD A</span><h3>Model prediction</h3></div>
+            <div>
+              <input id="prediction-json-input" type="file" accept=".json,application/json" hidden>
+              <button id="import-prediction" type="button" class="text-button">Import JSON</button>
+            </div>
+          </div>
+          <p>ROM, reconstruction, surrogate, analytical model or other fast prediction that you want to validate.</p>
+          <div class="input-grid">
+            <label for="prediction-strain">Worst-zone strain <span>με</span><input id="prediction-strain" type="number" min="0" step="any" placeholder="e.g. 1510"></label>
+            <label for="prediction-mode">First PCB mode <span>Hz</span><input id="prediction-mode" type="number" min="0" step="any" placeholder="e.g. 812"></label>
+            <label for="prediction-ratio">Peak ratio <span>%</span><input id="prediction-ratio" type="number" min="0" step="any" placeholder="e.g. 4.2"></label>
+          </div>
+          <label class="wide-label" for="prediction-source">Prediction source / run ID<input id="prediction-source" type="text" placeholder="Stage-2 reconstruction, run 583-072"></label>
+        </article>
+
+        <article class="result-card fe-card">
+          <div class="result-card-head">
+            <div><span class="tiny-label">METHOD B</span><h3>Direct FE result</h3></div>
+            <div>
+              <input id="fe-json-input" type="file" accept=".json,application/json" hidden>
+              <button id="import-fe" type="button" class="text-button">Import JSON</button>
+            </div>
+          </div>
+          <p>Independent direct finite-element output for the same layout, constraints, load case and result definitions.</p>
+          <div class="input-grid">
+            <label for="fe-strain">Worst-zone strain <span>με</span><input id="fe-strain" type="number" min="0" step="any" placeholder="e.g. 1499.2"></label>
+            <label for="fe-mode">First PCB mode <span>Hz</span><input id="fe-mode" type="number" min="0" step="any" placeholder="e.g. 823.6"></label>
+            <label for="fe-ratio">Peak ratio <span>%</span><input id="fe-ratio" type="number" min="0" step="any" placeholder="Optional exact value"></label>
+          </div>
+          <label class="wide-label" for="fe-dynamic-status">Dynamic criterion when no exact ratio is preserved
+            <select id="fe-dynamic-status">
+              <option value="">Not supplied</option>
+              <option value="pass">Source confirms pass</option>
+              <option value="fail">Source confirms fail</option>
+            </select>
+          </label>
+          <label class="wide-label" for="fe-source">FE source / job ID<input id="fe-source" type="text" placeholder="Direct FE job or source figure"></label>
+          <p id="fe-source-note" class="source-context"></p>
+        </article>
+      </div>
+
+      <details class="tolerance-panel">
+        <summary><span><strong>Agreement tolerances</strong><small>Configurable verification gates—not Paper 2 design limits.</small></span><span aria-hidden="true">+</span></summary>
+        <div class="tolerance-grid">
+          <label for="tol-strain">Strain error <span>relative %</span><input id="tol-strain" type="number" min="0" step="any"></label>
+          <label for="tol-mode">Mode error <span>relative %</span><input id="tol-mode" type="number" min="0" step="any"></label>
+          <label for="tol-ratio">Peak-ratio error <span>absolute percentage points</span><input id="tol-ratio" type="number" min="0" step="any"></label>
+        </div>
+      </details>
+
+      <article class="verification-output" aria-labelledby="comparison-title">
+        <div id="comparison-verdict" class="verdict-card neutral" aria-live="polite"></div>
+        <div class="comparison-table-wrap" tabindex="0" role="region" aria-label="Model and direct FE comparison table">
+          <table class="comparison-table">
+            <thead><tr><th scope="col">Output</th><th scope="col">Model</th><th scope="col">Direct FE</th><th scope="col">Error</th><th scope="col">Tolerance</th><th scope="col">Agreement</th></tr></thead>
+            <tbody id="comparison-body"></tbody>
+          </table>
+        </div>
+        <div class="criteria-panel">
+          <div><span class="tiny-label">PAPER 2 DESIGN LIMITS</span><h3 id="comparison-title">Do both methods reach the same decision?</h3></div>
+          <div id="criteria-grid" class="limit-grid"></div>
+        </div>
+        <div class="report-actions">
+          <button id="reset-results" type="button" class="button button-quiet">Reset result fields</button>
+          <button id="export-report" type="button" class="button button-dark">Export verification report</button>
+        </div>
+      </article>
+    </section>
+
+    <section class="evidence-section shell" id="evidence" aria-labelledby="evidence-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">03 / SOURCE EVIDENCE</p>
+          <h2 id="evidence-title">Why mount placement needs direct checks.</h2>
+        </div>
+        <p>The embedded numerical fields come from the research digest and repository evidence record. Unknown values remain unknown instead of being reconstructed from a picture.</p>
+      </div>
+
+      <figure class="evidence-figure">
+        <a href="../../evidence/mount-v10/dmc-four-mount-strain-comparison.png" target="_blank" rel="noopener noreferrer"><img src="../../evidence/mount-v10/dmc-four-mount-strain-comparison.png" width="4295" height="2032" loading="lazy" alt="Original finite-element strain maps compare two four-mount PCB layouts under the same 70 newton load. The selected layout reaches 1499.2 microstrain while the comparator reaches 14387.5 microstrain."></a>
+        <figcaption><strong>Same mount count. Approximately 9.6× different strain.</strong><span>Original DMC digest Fig. 1 · shared colour scale · orange markers are active mounts.</span></figcaption>
+      </figure>
+
+      <div class="study-summary">
+        <div class="study-funnel" aria-label="400 layouts sampled, 15 static passes, 5 full passes">
+          <span><strong>400</strong> sampled</span><i aria-hidden="true">→</i><span><strong>15</strong> strain passes</span><i aria-hidden="true">→</i><span><strong>5</strong> full passes</span>
+        </div>
+        <div class="study-links">
+          <a href="../../papers/dmc-2026-digest.pdf" target="_blank" rel="noopener noreferrer">Open research digest ↗</a>
+          <a href="../../evidence/mount-v10/mount-evidence.json" target="_blank" rel="noopener noreferrer">Open evidence record ↗</a>
+          <a href="README.md" target="_blank" rel="noopener noreferrer">Data contracts &amp; testing ↗</a>
+        </div>
+      </div>
+      <div id="caveat-grid" class="caveat-grid"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer shell">
+    <div><strong>PCB Mount Layout Studio v2.0</strong><span>Static, local-first and designed for GitHub Pages.</span></div>
+    <a href="../../../index.html#evidence-mount-intelligence">Return to Paper 2 story</a>
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

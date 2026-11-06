@@ -1,0 +1,8 @@
+{
+  "strainMicrostrain": 1499.2,
+  "firstModeHz": 823.6,
+  "peakRatioPercent": null,
+  "dynamicCriterionPass": true,
+  "source": "DMC 2026 digest, Figs. 1-2",
+  "note": "No PCB-dominated harmonic peak was detected. The exact peak ratio is intentionally left null."
+}

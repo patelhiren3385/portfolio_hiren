@@ -1,0 +1,36 @@
+name: PCB mount app tests
+
+on:
+  pull_request:
+    paths:
+      - 'assets/apps/pcb-mount-optimizer/**'
+      - 'assets/mount-showcase.js'
+      - '.github/workflows/pcb-mount-app.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'assets/apps/pcb-mount-optimizer/**'
+      - 'assets/mount-showcase.js'
+      - '.github/workflows/pcb-mount-app.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pcb-mount-app-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Use Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Run syntax, unit, integration, and DOM-contract tests
+        working-directory: assets/apps/pcb-mount-optimizer
+        run: npm run check
