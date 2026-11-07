@@ -1,11 +1,11 @@
 {
   "name": "pcb-mount-layout-studio",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "private": true,
   "description": "Static PCB mount-layout selection and model-to-FE verification app.",
   "scripts": {
-    "test": "node --test tests/*.test.js",
-    "check": "node --check model.js && node --check data.js && node --check app.js && node --test tests/*.test.js"
+    "test": "node --test tests/*.test.js v3-tests/*.test.js",
+    "check": "node --check model.js && node --check data.js && node --check app.js && node --check studio-core.js && node --check studio.js && node --test tests/*.test.js v3-tests/*.test.js"
   },
   "engines": {
     "node": ">=20"
