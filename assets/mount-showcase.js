@@ -36,7 +36,7 @@
 
       <div class="ms-footer">
         <p>Four mounts: smallest sufficient count in the sampled study.</p>
-        <a class="ms-detail-button" href="assets/apps/pcb-mount-optimizer/index.html">Open interactive optimizer ${arrow}</a>
+        <a class="ms-detail-button" href="assets/apps/pcb-mount-optimizer/index.html">Open PCB Mount Studio ${arrow}</a>
         <button type="button" class="ms-detail-button" data-research="mount-layout-dmc-2026">Method &amp; study details ${arrow}</button>
       </div>
 

@@ -1,43 +1,50 @@
-# Simple workflow for deploying static content to GitHub Pages
 name: Deploy static content to Pages
-
 on:
-  # Runs on pushes targeting the default branch
   push:
-    branches: ["main"]
-
-  # Allows you to run this workflow manually from the Actions tab
+    branches: [main]
   workflow_dispatch:
-
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
-
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
 concurrency:
-  group: "pages"
+  group: pages
   cancel-in-progress: false
-
 jobs:
-  # Single deploy job since we're just deploying
+  tests:
+    permissions:
+      contents: read
+    uses: ./.github/workflows/pcb-mount-app.yml
   deploy:
+    needs: tests
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
           path: '.'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
+      - name: Verify published entry and studio assets
+        env:
+          PAGE_URL: ${{ steps.deployment.outputs.page_url }}
+        run: |
+          node --input-type=module <<'JS'
+          const base=process.env.PAGE_URL;
+          const files=[['index.html','id="mount-studio-entry"'],['assets/apps/pcb-mount-optimizer/index.html','studio-core.js?v=3.0.0'],['assets/apps/pcb-mount-optimizer/studio.js',"version:'3.0.0'"]];
+          for(const [path,expected] of files){
+            let ok=false;
+            for(let attempt=0;attempt<5;attempt++){
+              const response=await fetch(new URL(path+'?check='+process.env.GITHUB_SHA,base));
+              if(response.ok&&(await response.text()).includes(expected)){ok=true;break;}
+              await new Promise(r=>setTimeout(r,5000));
+            }
+            if(!ok)throw new Error('Published content check failed: '+path);
+            console.log('Published content OK: '+path);
+          }
+          JS

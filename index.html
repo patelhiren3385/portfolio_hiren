@@ -34,7 +34,7 @@
   <script defer src="assets/bearing-insight.js"></script>
   <script defer src="assets/control-showcase.js"></script>
   <script defer src="assets/converter-showcase.js"></script>
-  <script defer src="assets/mount-showcase.js"></script>
+  <script defer src="assets/mount-showcase.js?v=3.0.0"></script>
   <script defer src="assets/thermal-showcase.js"></script>
   <script defer src="assets/evidence-app.js"></script>
 </head>
@@ -62,7 +62,7 @@
     <div class="shell header-inner">
       <a href="#top" class="brand" aria-label="Hiren Patel home"><span class="monogram">hp<span>.</span></span><span class="brand-name">Hiren Patel<span>ENGINEER / RESEARCHER</span></span></a>
       <nav class="main-nav" id="main-nav" aria-label="Main navigation">
-        <a href="#evidence">Selected work</a><a href="#space-mounts">Thermal mounts</a><a href="#applications">Applications</a><a href="#step-converter">CAD → simulation</a><a href="#publications">Papers</a><a href="#about">About</a>
+        <a href="assets/apps/pcb-mount-optimizer/index.html" data-mount-studio>Mount studio</a><a href="#evidence">Selected work</a><a href="#space-mounts">Thermal mounts</a><a href="#applications">Applications</a><a href="#step-converter">CAD → simulation</a><a href="#publications">Papers</a><a href="#about">About</a>
       </nav>
       <a class="header-contact" href="#contact">Let’s connect <svg class="icon"><use href="#i-arrow"/></svg></a>
       <button class="nav-toggle icon-button" aria-controls="main-nav" aria-expanded="false" aria-label="Open navigation"><svg class="icon"><use href="#i-menu"/></svg></button>
@@ -100,6 +100,7 @@
     <section id="evidence" class="section shell selected-stories" aria-labelledby="evidence-title">
       <div class="section-heading"><div><p class="eyebrow">01 / SELECTED WORK</p><h2 id="evidence-title">Start with a question.<br><span class="muted">Build the answer.</span></h2></div><p class="section-intro">Models. Measured evidence. Engineering software.<br>See the result, then explore the method.</p></div>
       <nav class="story-index" aria-label="Featured engineering questions"><a href="#evidence-pcb-digital-twin"><span>01</span> Reliability</a><a href="#evidence-industrial-intelligence"><span>02</span> Production ML</a><a href="#evidence-masters-rom-control"><span>03</span> Vibration control</a><a href="#evidence-mount-intelligence"><span>04</span> Mount design</a><a href="#space-mounts"><span>05</span> Thermal paths</a></nav>
+      <div id="mount-studio-entry" style="margin:24px 0;padding:20px;border:1px solid var(--line);border-radius:4px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap"><div><p class="eyebrow" style="margin-bottom:6px">INTERACTIVE TOOL / PCB SUPPORT DESIGN</p><strong>Define your board. Draw regions. Set your rules.</strong></div><a class="button button-dark" data-mount-studio href="assets/apps/pcb-mount-optimizer/index.html">Open PCB Mount Studio →</a></div>
       <div id="evidence-stories"></div>
     </section>
 
